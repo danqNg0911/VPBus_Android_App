@@ -1,0 +1,102 @@
+package com.example.vpbus.ui;
+
+import android.content.Context;
+
+import org.mapsforge.core.model.BoundingBox;
+import org.mapsforge.core.model.LatLong;
+import org.mapsforge.map.android.graphics.AndroidGraphicFactory;
+import org.mapsforge.map.android.util.AndroidUtil;
+import org.mapsforge.map.android.view.MapView;
+import org.mapsforge.map.datastore.MapDataStore;
+import org.mapsforge.map.layer.cache.TileCache;
+import org.mapsforge.map.layer.renderer.TileRendererLayer;
+import org.mapsforge.map.model.MapViewPosition;
+import org.mapsforge.map.reader.MapFile;
+import org.mapsforge.map.rendertheme.ExternalRenderTheme;
+
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
+
+public class MapsManager {
+    private TileRendererLayer tileRendererLayer;
+    private TileCache tileCache;
+
+    public void initMap(Context context, MapView mapView, String mapFileName, String themeFileName) throws IOException {
+
+        AndroidGraphicFactory.createInstance(context.getApplicationContext());
+        mapView.setClickable(true);
+
+        // Copy file .map
+        File mapFile = copyMapFromAssets(context, mapFileName);
+        MapDataStore mapDataStore = new MapFile(mapFile);
+
+        // Cache
+        tileCache = AndroidUtil.createTileCache(
+                context,
+                "mapcache",
+                mapView.getModel().displayModel.getTileSize(),
+                1f,
+                mapView.getModel().frameBufferModel.getOverdrawFactor()
+        );
+
+        // Renderer layer
+        tileRendererLayer = new TileRendererLayer(
+                tileCache,
+                mapDataStore,
+                mapView.getModel().mapViewPosition,
+                AndroidGraphicFactory.INSTANCE
+        );
+
+        File themeFile = copyMapFromAssets(context, themeFileName);
+        tileRendererLayer.setXmlRenderTheme(new ExternalRenderTheme(themeFile));
+
+        mapView.getLayerManager().getLayers().add(tileRendererLayer);
+
+        BoundingBox boundingBox = new BoundingBox(
+                21.1382,   // minLatitude
+                105.2203,  // minLongitude
+                21.5317,   // maxLatitude
+                105.6712   // maxLongitude
+        );
+
+        MapViewPosition mapViewPosition = mapView.getModel().mapViewPosition;
+
+        mapViewPosition.setMapLimit(boundingBox);
+    }
+
+    public void setInitialPosition(MapView mapView, double lat, double lon, byte zoom) {
+        mapView.getModel().mapViewPosition.setCenter(new LatLong(lat, lon));
+        mapView.getModel().mapViewPosition.setZoomLevel(zoom);
+    }
+
+    public void onDestroy(MapView mapView) {
+        if (tileRendererLayer != null) {
+            tileRendererLayer.onDestroy();
+        }
+        if (tileCache != null) {
+            tileCache.destroy();
+        }
+        if (mapView != null) {
+            mapView.destroyAll();
+        }
+        AndroidGraphicFactory.clearResourceMemoryCache();
+    }
+
+    private File copyMapFromAssets(Context context, String assetName) throws IOException {
+        File outFile = new File(context.getFilesDir(), assetName);
+        if (!outFile.exists()) {
+            try (InputStream in = context.getAssets().open(assetName);
+                 OutputStream out = new FileOutputStream(outFile)) {
+                byte[] buffer = new byte[8192];
+                int length;
+                while ((length = in.read(buffer)) > 0) {
+                    out.write(buffer, 0, length);
+                }
+            }
+        }
+        return outFile;
+    }
+}

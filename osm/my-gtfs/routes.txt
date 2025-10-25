@@ -1,0 +1,10 @@
+﻿route_id,route_short_name,route_long_name,route_type
+1,VP01,VP01 : Bồ Sao (Vĩnh Tường) - Mê Linh Plaza,3
+3,VP03,VP03 : Vĩnh Yên - Sông Lô,3
+4,VP04,VP04 : Vĩnh Yên - Cao Đại (Vĩnh Tường),3
+5,VP05,VP05 : Vĩnh Yên - Vĩnh Thịnh,3
+6,VP06,VP06 : Vĩnh Yên - Quang Sơn (Lập Thạch),3
+7,VP07,VP07 : Vĩnh Yên - Bồ Lý (Tam Đảo),3
+8,VP08,VP08 : Phúc Yên - Vĩnh Tường,3
+9,VP09,VP09 : Kim Xá (Vĩnh Tường) - Phúc Yên,3
+10,VP10,VP10 : Lập Thạch - Phúc Yên,3

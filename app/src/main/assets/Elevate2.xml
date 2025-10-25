@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+
+Elevate theme family
+********************
+including Elevate & Elements
+
+Version:
+5.2
+
+Mapsforge map style for OpenAndroMaps
+by Tobias Kuehn
+Contact: http://www.eartrumpet.net/contact/
+
+License:
+********
+
+This map style is licensed under a Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License: https://creativecommons.org/licenses/by-nc-sa/4.0/
+For commercial usage it is licensed under a Attribution-NoDerivatives 4.0 International License: https://creativecommons.org/licenses/by-nd/4.0/
+Please have a look at read_me_elevate.txt for reuse and licenses of resources used in this theme.
+
+-->
+<rendertheme xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" map-background="#F8F8F8" map-background-outside="#EEEEEE" version="5" xmlns="http://mapsforge.org/renderTheme" xsi:schemaLocation="http://mapsforge.org/renderTheme https://raw.githubusercontent.com/mapsforge/mapsforge/master/resources/renderTheme.xsd">
+
+<stylemenu id="elv-menu" defaultvalue="elv-hiking" defaultlang="en">
+	<layer id="city" enabled="true">
+		<cat id="base"/>
+		<cat id="landuse"/>
+		<cat id="water"/>
+		<cat id="buildings"/>
+		<cat id="roads"/>
+		<cat id="labels"/>
+		<cat id="poi"/>
+	</layer>
+</stylemenu>
+
+
+	<!-- Residential area -->
+	<rule e="way" k="landuse" v="residential" zoom-min="10">
+		<area fill="#EFEFEF"/>
+	</rule>
+
+	<!-- Commercial / Industrial -->
+	<rule e="way" k="landuse" v="commercial|industrial" zoom-min="12">
+		<area fill="#E6E6E6"/>
+	</rule>
+
+	<!-- Forest / Park -->
+	<rule e="way" k="landuse" v="forest|grass|meadow|park" zoom-min="12">
+		<area fill="#D5E8CF"/>
+	</rule>
+
+	<!--water-->
+	<rule e="way" k="natural" v="water|bay" zoom-min="8">
+		<area fill="#AADAFF"/>
+	</rule>
+
+	<rule e="way" k="waterway" v="river|canal|stream" zoom-min="11">
+		<line stroke="#AADAFF" stroke-width="1.0"/>
+	</rule>
+
+	<!--building-->
+	<rule e="way" k="building" v="*" zoom-min="14">
+		<area fill="#D9D4C7" stroke="#C0B8A8" stroke-width="0.5"/>
+	</rule>
+
+<!--road-->
+	<!-- Pedestrian / Service -->
+	<rule e="way" k="highway" v="pedestrian|service" zoom-min="14">
+		<line stroke="#FFF3BD" stroke-width="1.4" priority="3"/>
+		<line stroke="#FFFFFF" stroke-width="1.2" priority="4"/>
+	</rule>
+
+	<!-- Tertiary / Residential -->
+	<rule e="way" k="highway" v="tertiary|residential|living_street|unclassified" zoom-min="12">
+		<line stroke="#FFF3BD" stroke-width="1.7" priority="5"/>
+		<line stroke="#FFFFFF" stroke-width="1.5" priority="6"/>
+	</rule>
+
+	<!-- Primary / Secondary -->
+	<rule e="way" k="highway" v="primary|secondary" zoom-min="10">
+		<line stroke="#FFBD59" stroke-width="2.4" priority="7" stroke-casing-width=""/>
+		<line stroke="#fbf5da" stroke-width="2.2" priority="8"/>
+	</rule>
+
+	<!-- Motorway / Trunk -->
+	<rule e="way" k="highway" v="motorway|trunk" zoom-min="8">
+		<line stroke="#FFBD59" stroke-width="3.2" priority="9"/>
+		<line stroke="#fbf5da" stroke-width="3.0" priority="10"/>
+	</rule>
+
+<!--POI	-->
+	<rule e="node" k="amenity" v="hospital" zoom-min="14">
+		<symbol src="file:ele-res/s_hospital.svg" symbol-width="16" symbol-height="16"/>
+		<caption k="name" font-size="11" fill="#AA0000" stroke="#FFFFFF" stroke-width="2"/>
+	</rule>
+
+	<rule e="node" k="amenity" v="school|college|university" zoom-min="15">
+		<symbol src="file:ele-res/s_school.svg" symbol-width="14" symbol-height="14"/>
+		<caption k="name" font-size="11" fill="#0055AA" stroke="#FFFFFF" stroke-width="2"/>
+	</rule>
+
+	<rule e="node" k="amenity" v="townhall" zoom-min="15">
+		<symbol src="file:ele-res/s_townhall.svg" symbol-width="14" symbol-height="14"/>
+		<caption k="name" font-size="11" fill="#333333" stroke="#FFFFFF" stroke-width="2"/>
+	</rule>
+
+	<rule e="way" k="place" v="square" zoom-min="14">
+		<area fill="#F5F5DC"/>
+		<caption k="name" font-size="11" fill="#333333" stroke="#FFFFFF" stroke-width="2"/>
+	</rule>
+
+	<rule e="node" k="amenity" v="post_office" zoom-min="15">
+		<symbol src="file:ele-res/s_postoffice.svg" symbol-width="12" symbol-height="12"/>
+		<caption k="name" font-size="10" fill="#000000" stroke="#FFFFFF" stroke-width="2"/>
+	</rule>
+
+	<rule e="node" k="shop" v="supermarket" zoom-min="15">
+		<symbol src="file:ele-res/s_supermarket.svg" symbol-width="14" symbol-height="14"/>
+		<caption k="name" font-size="10" fill="#008000" stroke="#FFFFFF" stroke-width="2"/>
+	</rule>
+
+	<rule e="node" k="amenity" v="marketplace" zoom-min="15">
+		<symbol src="file:ele-res/s_marketplace.svg" symbol-width="14" symbol-height="14"/>
+		<caption k="name" font-size="10" fill="#AA5500" stroke="#FFFFFF" stroke-width="2"/>
+	</rule>
+
+	<!-- name -->
+	<rule e="node" k="place" v="city" zoom-min="7">
+		<caption k="name" font-size="14" fill="#222222" stroke="#FFFFFF" stroke-width="2"/>
+	</rule>
+
+	<rule e="node" k="place" v="town|suburb" zoom-min="10">
+		<caption k="name" font-size="12" fill="#333333" stroke="#FFFFFF" stroke-width="2"/>
+	</rule>
+
+	<rule e="node" k="place" v="village|hamlet" zoom-min="13">
+		<caption k="name" font-size="11" fill="#444444" stroke="#FFFFFF" stroke-width="2"/>
+	</rule>
+
+	<rule e="way" k="highway" v="residential|tertiary|unclassified" zoom-min="14">
+		<caption k="name" font-size="10" fill="#000000" stroke="#FFFFFF" stroke-width="2" repeat-gap="200"/>
+	</rule>
+
+	<rule e="way" k="highway" v="motorway|trunk|primary|secondary" zoom-min="12">
+		<caption k="name" font-size="12" fill="#000000" stroke="#FFFFFF" stroke-width="2" repeat-gap="200"/>
+	</rule>
+
+	<!-- Tên hồ -->
+	<rule e="way" k="natural" v="water" zoom-min="12">
+		<area fill="#AADAFF"/>
+		<caption k="name" font-size="11" fill="#205080" stroke="#FFFFFF" stroke-width="2"/>
+	</rule>
+
+	<!-- Tên sông -->
+	<rule e="way" k="waterway" v="river|canal" zoom-min="12">
+		<line stroke="#AADAFF" stroke-width="1.0"/>
+		<caption k="name" font-size="10" fill="#205080" stroke="#FFFFFF" stroke-width="2"/>
+	</rule>
+
+
+</rendertheme>

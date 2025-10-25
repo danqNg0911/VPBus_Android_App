@@ -1,0 +1,280 @@
+{'\ufeffstop_id': '0BXN01', 'stop_name': 'Kếu', 'stop_lat': '21.24422167', 'stop_lon': '105.676952'}
+{'\ufeffstop_id': '0BXN02', 'stop_name': 'Thép Việt Đức', 'stop_lat': '21.2489572', 'stop_lon': '105.6722304'}
+{'\ufeffstop_id': '0BXN03', 'stop_name': 'Cổng KCN Bình Xuyên', 'stop_lat': '21.25595576', 'stop_lon': '105.6658112'}
+{'\ufeffstop_id': '0BXN04', 'stop_name': 'Ngã 3 Đầm Cả', 'stop_lat': '21.26077033', 'stop_lon': '105.655707'}
+{'\ufeffstop_id': '0BXN05', 'stop_name': 'Chi cục Thuế Bình Xuyên', 'stop_lat': '21.2658363', 'stop_lon': '105.6527897'}
+{'\ufeffstop_id': '0BXN06', 'stop_name': 'Chợ Hương Canh', 'stop_lat': '21.27176179', 'stop_lon': '105.6504358'}
+{'\ufeffstop_id': '0BXN07', 'stop_name': 'UBND Bình Xuyên', 'stop_lat': '21.2750493', 'stop_lon': '105.6491113'}
+{'\ufeffstop_id': '0BXN08', 'stop_name': 'Công an huyện Bình Xuyên', 'stop_lat': '21.27906067', 'stop_lon': '105.6461111'}
+{'\ufeffstop_id': '0BXN09', 'stop_name': 'Cầu các', 'stop_lat': '21.28077664', 'stop_lon': '105.6413507'}
+{'\ufeffstop_id': '0BXN10', 'stop_name': 'Ngã 4 QL2', 'stop_lat': '21.28270235', 'stop_lon': '105.6358999'}
+{'\ufeffstop_id': '0BXN11', 'stop_name': 'Cổng làng Láng 1', 'stop_lat': '21.23344415', 'stop_lon': '105.6141641'}
+{'\ufeffstop_id': '0BXN12', 'stop_name': 'Cổng làng Láng 2', 'stop_lat': '21.24089639', 'stop_lon': '105.6238411'}
+{'\ufeffstop_id': '0BXN13', 'stop_name': 'Ngã tư Thanh Lãng', 'stop_lat': '21.24603617', 'stop_lon': '105.6308318'}
+{'\ufeffstop_id': '0BXN14', 'stop_name': 'Xã Tân Phong', 'stop_lat': '21.24998596', 'stop_lon': '105.6370194'}
+{'\ufeffstop_id': '0BXN15', 'stop_name': 'Đầu đường xã Tân Phong', 'stop_lat': '21.25371498', 'stop_lon': '105.6391943'}
+{'\ufeffstop_id': '0BXN16', 'stop_name': 'Công ty Piaggio Việt Nam', 'stop_lat': '21.26134978', 'stop_lon': '105.6689485'}
+{'\ufeffstop_id': '0BXN17', 'stop_name': 'Xí nghiệp dụng cụ giao thông Giai Việt', 'stop_lat': '21.2654803', 'stop_lon': '105.670432'}
+{'\ufeffstop_id': '0BXN18', 'stop_name': 'Trung tâm Logistic ICD Vĩnh Phúc', 'stop_lat': '21.27365009', 'stop_lon': '105.6731701'}
+{'\ufeffstop_id': '0BXN19', 'stop_name': 'Tập đoàn Vina Top', 'stop_lat': '21.28610922', 'stop_lon': '105.6704682'}
+{'\ufeffstop_id': '0BXN20', 'stop_name': 'Ngã ba đi Hương Canh', 'stop_lat': '21.29665638', 'stop_lon': '105.6731152'}
+{'\ufeffstop_id': '0BXN21', 'stop_name': 'KCN Bình Xuyên 2', 'stop_lat': '21.30343748', 'stop_lon': '105.6800774'}
+{'\ufeffstop_id': '0BXN22', 'stop_name': 'KCN Bá Thiện 1', 'stop_lat': '21.31865973', 'stop_lon': '105.6836876'}
+{'\ufeffstop_id': '0BXN23', 'stop_name': 'Nhà thờ Bảo Sơn', 'stop_lat': '21.32891247', 'stop_lon': '105.6860868'}
+{'\ufeffstop_id': '0BXN24', 'stop_name': 'Đối diện Cổng KCN Bá Thiện 2', 'stop_lat': '21.33712819', 'stop_lon': '105.6755988'}
+{'\ufeffstop_id': '0BXN25', 'stop_name': 'Công ty SamJin Vina', 'stop_lat': '21.33968748', 'stop_lon': '105.6722845'}
+{'\ufeffstop_id': '0BXN26', 'stop_name': 'Công ty DST Vina', 'stop_lat': '21.34521534', 'stop_lon': '105.6693205'}
+{'\ufeffstop_id': '0BXN27', 'stop_name': 'Công ty ActRo Vina', 'stop_lat': '21.34559891', 'stop_lon': '105.671113'}
+{'\ufeffstop_id': '0BXN28', 'stop_name': 'Công ty Sơn Nippon', 'stop_lat': '21.34039939', 'stop_lon': '105.6747709'}
+{'\ufeffstop_id': '0BXN29', 'stop_name': 'Cổng KCN Bá Thiện 2', 'stop_lat': '21.33738802', 'stop_lon': '105.6756256'}
+{'\ufeffstop_id': '0BXN30', 'stop_name': 'Ngã ba KCN Bá Thiện', 'stop_lat': '21.33486521', 'stop_lon': '105.6885471'}
+{'\ufeffstop_id': '0BXN31', 'stop_name': 'Ngã tư Trung Mỹ Bá Hiến', 'stop_lat': '21.33415883', 'stop_lon': '105.6922535'}
+{'\ufeffstop_id': '0BXN32', 'stop_name': 'Hạt Quản lý đường bộ', 'stop_lat': '21.33116995', 'stop_lon': '105.6992202'}
+{'\ufeffstop_id': '0HNI01', 'stop_name': 'Mê Linh Plaza', 'stop_lat': '21.18636496', 'stop_lon': '105.7806222'}
+{'\ufeffstop_id': '0HNI02', 'stop_name': 'Đầu làng Gia Trung', 'stop_lat': '21.19118553', 'stop_lon': '105.7804589'}
+{'\ufeffstop_id': '0HNI03', 'stop_name': 'Trạm thu phí Nội Bài', 'stop_lat': '21.20297352', 'stop_lon': '105.7796659'}
+{'\ufeffstop_id': '0HNI04', 'stop_name': 'Ngã tư Cao tốc Nội Bài', 'stop_lat': '21.21516527', 'stop_lon': '105.7784302'}
+{'\ufeffstop_id': '0HNI05', 'stop_name': 'Ngã 3 Nỉ', 'stop_lat': '21.21797511', 'stop_lon': '105.775509'}
+{'\ufeffstop_id': '0HNI06', 'stop_name': 'Bưu điện Kim Anh', 'stop_lat': '21.2270857', 'stop_lon': '105.7616642'}
+{'\ufeffstop_id': '0HNI07', 'stop_name': 'Ngã 3 vinaco', 'stop_lat': '21.23575394', 'stop_lon': '105.7461988'}
+{'\ufeffstop_id': '0HNI08', 'stop_name': 'Trạm thu phí QL2', 'stop_lat': '21.23841455', 'stop_lon': '105.7420947'}
+{'\ufeffstop_id': '0HNI09', 'stop_name': 'Cầu Xây - Cầu Xuân Phương', 'stop_lat': '21.24006307', 'stop_lon': '105.7368301'}
+{'\ufeffstop_id': '0HNI10', 'stop_name': 'Bến xe Thanh Lâm', 'stop_lat': '21.21684464', 'stop_lon': '105.7038592'}
+{'\ufeffstop_id': '0PYN01', 'stop_name': 'Honda Phúc Yên', 'stop_lat': '21.23640208', 'stop_lon': '105.7215488'}
+{'\ufeffstop_id': '0PYN02', 'stop_name': 'Toyota Phúc Yên', 'stop_lat': '21.23135728', 'stop_lon': '105.711177'}
+{'\ufeffstop_id': '0PYN03', 'stop_name': 'Nghĩa trang Phúc Yên', 'stop_lat': '21.23108382', 'stop_lon': '105.7027534'}
+{'\ufeffstop_id': '0PYN04', 'stop_name': 'Nhà hàng Ánh Tuyết', 'stop_lat': '21.23086421', 'stop_lon': '105.6954287'}
+{'\ufeffstop_id': '0PYN05', 'stop_name': 'Cầu Tiền Châu', 'stop_lat': '21.23430071', 'stop_lon': '105.6888589'}
+{'\ufeffstop_id': '0PYN06', 'stop_name': 'Ngã ba đi Đèo Nhe', 'stop_lat': '21.32746772', 'stop_lon': '105.7036422'}
+{'\ufeffstop_id': '0PYN07', 'stop_name': 'Ngõ 12 Phạm Văn Đồng', 'stop_lat': '21.30318801', 'stop_lon': '105.7149233'}
+{'\ufeffstop_id': '0PYN08', 'stop_name': 'Cổng Nhà máy Xe đạp Xuân Hòa', 'stop_lat': '21.29821818', 'stop_lon': '105.7126048'}
+{'\ufeffstop_id': '0PYN09', 'stop_name': 'Xí nghiệp Điện quang 23', 'stop_lat': '21.2952101', 'stop_lon': '105.7140056'}
+{'\ufeffstop_id': '0PYN10', 'stop_name': 'Trường Cao đẳng nghề Cơ điện', 'stop_lat': '21.28622167', 'stop_lon': '105.7181434'}
+{'\ufeffstop_id': '0PYN11', 'stop_name': 'KTX ĐH Sư phạm 2', 'stop_lat': '21.28207263', 'stop_lon': '105.723585'}
+{'\ufeffstop_id': '0PYN12', 'stop_name': 'Đại học Sư phạm 2', 'stop_lat': '21.28081389', 'stop_lon': '105.7258309'}
+{'\ufeffstop_id': '0PYN13', 'stop_name': 'Ngã tư Xuân Hòa', 'stop_lat': '21.27719532', 'stop_lon': '105.7290406'}
+{'\ufeffstop_id': '0PYN14', 'stop_name': 'Viettinbank Xuân Hòa', 'stop_lat': '21.27452947', 'stop_lon': '105.7263467'}
+{'\ufeffstop_id': '0PYN15', 'stop_name': 'Cây xăng Xuân Hòa', 'stop_lat': '21.2714997', 'stop_lon': '105.7243318'}
+{'\ufeffstop_id': '0PYN16', 'stop_name': 'Khu đô thị Xuân Hòa', 'stop_lat': '21.26474787', 'stop_lon': '105.7217136'}
+{'\ufeffstop_id': '0PYN17', 'stop_name': 'Cầu Khả Do', 'stop_lat': '21.26100917', 'stop_lon': '105.7187896'}
+{'\ufeffstop_id': '0PYN18', 'stop_name': 'UBND xã Nam Viêm', 'stop_lat': '21.25867063', 'stop_lon': '105.7151945'}
+{'\ufeffstop_id': '0PYN19', 'stop_name': 'Ngõ 16 Trần Phú', 'stop_lat': '21.25398676', 'stop_lon': '105.7133918'}
+{'\ufeffstop_id': '0PYN20', 'stop_name': 'Ngõ 12 Trần Phú', 'stop_lat': '21.24873645', 'stop_lon': '105.7116804'}
+{'\ufeffstop_id': '0PYN21', 'stop_name': 'Cổng xí nghiệp Cơ khí 2', 'stop_lat': '21.24294981', 'stop_lon': '105.7102381'}
+{'\ufeffstop_id': '0PYN22', 'stop_name': 'Tòa nhà Tuấn Tài', 'stop_lat': '21.23991505', 'stop_lon': '105.7083985'}
+{'\ufeffstop_id': '0PYN23', 'stop_name': 'Quảng trường Phúc Yên', 'stop_lat': '21.23695656', 'stop_lon': '105.7061956'}
+{'\ufeffstop_id': '0PYN24', 'stop_name': 'Ngân hàng Công thương Phúc Yên', 'stop_lat': '21.23541042', 'stop_lon': '105.7057667'}
+{'\ufeffstop_id': '0PYN25', 'stop_name': 'Ngã tư Phúc Yên', 'stop_lat': '21.2307033', 'stop_lon': '105.7062747'}
+{'\ufeffstop_id': '0PYN26', 'stop_name': 'Cổng Bệnh viện 74', 'stop_lat': '21.22535042', 'stop_lon': '105.7048386'}
+{'\ufeffstop_id': '0TDG01', 'stop_name': 'Cây xăng Quân đội Hợp Thịnh', 'stop_lat': '21.28799667', 'stop_lon': '105.5460685'}
+{'\ufeffstop_id': '0VTG01', 'stop_name': 'Ngã 3 Đồng Văn', 'stop_lat': '21.2843847', 'stop_lon': '105.5359952'}
+{'\ufeffstop_id': '0VTG02', 'stop_name': 'Chợ Kiệu', 'stop_lat': '21.27881141', 'stop_lon': '105.5198097'}
+{'\ufeffstop_id': '0VTG03', 'stop_name': 'Ngã 5 Chấn Hưng', 'stop_lat': '21.27833762', 'stop_lon': '105.5109677'}
+{'\ufeffstop_id': '0VTG04', 'stop_name': 'Đại Đồng', 'stop_lat': '21.27802348', 'stop_lon': '105.5059985'}
+{'\ufeffstop_id': '0VTG05', 'stop_name': 'Tân Tiến', 'stop_lat': '21.27784706', 'stop_lon': '105.4902609'}
+{'\ufeffstop_id': '0VTG06', 'stop_name': 'Bến xe Vĩnh Tường', 'stop_lat': '21.27877019', 'stop_lon': '105.4839895'}
+{'\ufeffstop_id': '0VTG07', 'stop_name': 'Dốc Đồi Me', 'stop_lat': '21.27971794', 'stop_lon': '105.4695223'}
+{'\ufeffstop_id': '0VTG08', 'stop_name': 'Ngã 3 Trường Nghề - Lũng Hòa', 'stop_lat': '21.2791566', 'stop_lon': '105.46586'}
+{'\ufeffstop_id': '0VTG09', 'stop_name': 'Hòa Loan', 'stop_lat': '21.27827344', 'stop_lon': '105.4607858'}
+{'\ufeffstop_id': '0VTG10', 'stop_name': 'Bồ Sao (Bến xe bus Bồ Sao)', 'stop_lat': '21.27907405', 'stop_lon': '105.454625'}
+{'\ufeffstop_id': '0VTG11', 'stop_name': 'Km 12 QL2C xã Đồng Văn', 'stop_lat': '21.25029696', 'stop_lon': '105.5381454'}
+{'\ufeffstop_id': '0VTG12', 'stop_name': 'Công an PCCC Vĩnh Tường', 'stop_lat': '21.24401235', 'stop_lon': '105.5340637'}
+{'\ufeffstop_id': '0VTG13', 'stop_name': 'Ngã tư Vân Xuân', 'stop_lat': '21.23518344', 'stop_lon': '105.5285333'}
+{'\ufeffstop_id': '0VTG14', 'stop_name': 'Cầu Xuân Lai', 'stop_lat': '21.22988291', 'stop_lon': '105.5254684'}
+{'\ufeffstop_id': '0VTG15', 'stop_name': 'Cổng làng Vũ Di', 'stop_lat': '21.22441918', 'stop_lon': '105.521407'}
+{'\ufeffstop_id': '0VTG16', 'stop_name': 'Bệnh viện đa khoa Vĩnh Tường', 'stop_lat': '21.22075319', 'stop_lon': '105.5181605'}
+{'\ufeffstop_id': '0VTG17', 'stop_name': 'Ngã tư Vũ Di', 'stop_lat': '21.2161896', 'stop_lon': '105.513259'}
+{'\ufeffstop_id': '0VTG18', 'stop_name': 'Nhà văn hóa TT Vĩnh Tường', 'stop_lat': '21.21898728', 'stop_lon': '105.5102103'}
+{'\ufeffstop_id': '0VTG19', 'stop_name': 'SVĐ Vĩnh Tường', 'stop_lat': '21.22292958', 'stop_lon': '105.5065867'}
+{'\ufeffstop_id': '0VTG20', 'stop_name': 'Trường THPT Lê Xoay', 'stop_lat': '21.22559221', 'stop_lon': '105.5033208'}
+{'\ufeffstop_id': '0VTG21', 'stop_name': 'Ngã ba Thượng Trưng', 'stop_lat': '21.22825911', 'stop_lon': '105.4962216'}
+{'\ufeffstop_id': '0VTG22', 'stop_name': 'TTTM Phúc Sơn - Thổ Tang', 'stop_lat': '21.24020319', 'stop_lon': '105.4914387'}
+{'\ufeffstop_id': '0VTG23', 'stop_name': 'Nghĩa trang Thổ Tang', 'stop_lat': '21.24658437', 'stop_lon': '105.4896728'}
+{'\ufeffstop_id': '0VTG24', 'stop_name': 'Đường rẽ Xóm Thụ', 'stop_lat': '21.244', 'stop_lon': '105.4841505'}
+{'\ufeffstop_id': '0VTG25', 'stop_name': 'UBND xã Thượng Trưng', 'stop_lat': '21.24020468', 'stop_lon': '105.47909'}
+{'\ufeffstop_id': '0VTG26', 'stop_name': 'Trường TH Thượng Trưng', 'stop_lat': '21.23939215', 'stop_lon': '105.4770429'}
+{'\ufeffstop_id': '0VTG27', 'stop_name': 'Trường THCS Tân Phú', 'stop_lat': '21.24117771', 'stop_lon': '105.4698855'}
+{'\ufeffstop_id': '0VTG28', 'stop_name': 'Bưu điện Tân Phú', 'stop_lat': '21.24176949', 'stop_lon': '105.4672325'}
+{'\ufeffstop_id': '0VTG29', 'stop_name': 'Đê Tân Phú', 'stop_lat': '21.2427145', 'stop_lon': '105.4621824'}
+{'\ufeffstop_id': '0VTG30', 'stop_name': 'Đường rẽ xóm Bãi Xã', 'stop_lat': '21.24667768', 'stop_lon': '105.4570055'}
+{'\ufeffstop_id': '0VTG31', 'stop_name': 'UBND xã Cao Đại', 'stop_lat': '21.25080671', 'stop_lon': '105.45347'}
+{'\ufeffstop_id': '0VTG32', 'stop_name': 'Bến xe khách TT Vĩnh Tường', 'stop_lat': '21.21432757', 'stop_lon': '105.5146845'}
+{'\ufeffstop_id': '0VTG33', 'stop_name': 'UBND xã Tứ Trưng', 'stop_lat': '21.20881633', 'stop_lon': '105.5198993'}
+{'\ufeffstop_id': '0VTG34', 'stop_name': 'HTX Tứ Trưng', 'stop_lat': '21.20532419', 'stop_lon': '105.5218036'}
+{'\ufeffstop_id': '0VTG35', 'stop_name': 'Đầu đường rẽ đi Yên Đồng', 'stop_lat': '21.20194213', 'stop_lon': '105.5251106'}
+{'\ufeffstop_id': '0VTG36', 'stop_name': 'Thôn Thị - Tứ Trưng', 'stop_lat': '21.20448415', 'stop_lon': '105.5284385'}
+{'\ufeffstop_id': '0VYN00', 'stop_name': 'Big C Vĩnh Phúc', 'stop_lat': '21.29260498', 'stop_lon': '105.6309426'}
+{'\ufeffstop_id': '0VYN01', 'stop_name': 'Bến xe vĩnh Yên', 'stop_lat': '21.3011232', 'stop_lon': '105.6263'}
+{'\ufeffstop_id': '0VYN02', 'stop_name': 'Công ty Power', 'stop_lat': '21.30451878', 'stop_lon': '105.6247'}
+{'\ufeffstop_id': '0VYN03', 'stop_name': 'Công ty vina Korea', 'stop_lat': '21.3095715', 'stop_lon': '105.624'}
+{'\ufeffstop_id': '0VYN04', 'stop_name': 'Công ty Shinwon', 'stop_lat': '21.31201783', 'stop_lon': '105.6229'}
+{'\ufeffstop_id': '0VYN05', 'stop_name': 'Sở Cảnh sát & PCCC', 'stop_lat': '21.3152706', 'stop_lon': '105.6219112'}
+{'\ufeffstop_id': '0VYN06', 'stop_name': 'Co.opmart Vĩnh Phúc', 'stop_lat': '21.31259807', 'stop_lon': '105.6149076'}
+{'\ufeffstop_id': '0VYN07', 'stop_name': 'Chi cục Dân số KHHGĐ', 'stop_lat': '21.31293551', 'stop_lon': '105.6118626'}
+{'\ufeffstop_id': '0VYN08', 'stop_name': 'Ngân hàng ACB', 'stop_lat': '21.31470507', 'stop_lon': '105.6063581'}
+{'\ufeffstop_id': '0VYN09', 'stop_name': 'Đầu đường Bà Triệu', 'stop_lat': '21.31361443', 'stop_lon': '105.6006836'}
+{'\ufeffstop_id': '0VYN10', 'stop_name': 'Đường Kim Ngọc', 'stop_lat': '21.31284383', 'stop_lon': '105.5963925'}
+{'\ufeffstop_id': '0VYN11', 'stop_name': 'Kho bạc tỉnh Vĩnh Phúc', 'stop_lat': '21.30920543', 'stop_lon': '105.5941533'}
+{'\ufeffstop_id': '0VYN12', 'stop_name': 'UBND TP Vĩnh Yên', 'stop_lat': '21.30872316', 'stop_lon': '105.5898016'}
+{'\ufeffstop_id': '0VYN13', 'stop_name': 'Công An Phường Tích Sơn', 'stop_lat': '21.30749087', 'stop_lon': '105.5838994'}
+{'\ufeffstop_id': '0VYN14', 'stop_name': 'Cầu Oai', 'stop_lat': '21.30631954', 'stop_lon': '105.5761378'}
+{'\ufeffstop_id': '0VYN15', 'stop_name': 'Ngã ba Tam Dương', 'stop_lat': '21.30597739', 'stop_lon': '105.5726528'}
+{'\ufeffstop_id': '0VYN16', 'stop_name': 'Bưu cục Đồng Tâm', 'stop_lat': '21.30587122', 'stop_lon': '105.5701668'}
+{'\ufeffstop_id': '0VYN17', 'stop_name': 'Cao đẳng Kinh tế Kỹ thuật Vĩnh Phúc', 'stop_lat': '21.30167783', 'stop_lon': '105.5626285'}
+{'\ufeffstop_id': '0VYN18', 'stop_name': 'Ngã tư Quán Tiên', 'stop_lat': '21.29957958', 'stop_lon': '105.5600386'}
+{'\ufeffstop_id': '0VYN19', 'stop_name': 'Trường THPT Vĩnh Yên', 'stop_lat': '21.29637544', 'stop_lon': '105.5563358'}
+{'\ufeffstop_id': '0VYN20', 'stop_name': 'Ngã tư Hợp Thịnh', 'stop_lat': '21.29393552', 'stop_lon': '105.5534783'}
+{'\ufeffstop_id': '0YLC01', 'stop_name': 'Bệnh viện Sản nhi', 'stop_lat': '21.28089647', 'stop_lon': '105.5405821'}
+{'\ufeffstop_id': '0YLC02', 'stop_name': 'UBND xã Đồng Văn', 'stop_lat': '21.26789125', 'stop_lon': '105.5426818'}
+{'\ufeffstop_id': '0YLC03', 'stop_name': 'Ngã tư Đồng Lạc', 'stop_lat': '21.26038051', 'stop_lon': '105.5398955'}
+{'\ufeffstop_id': '0YLC04', 'stop_name': 'Trường Tiểu học Yên Đồng', 'stop_lat': '21.21489996', 'stop_lon': '105.5459528'}
+{'\ufeffstop_id': '0YLC05', 'stop_name': 'Yên Đồng', 'stop_lat': '21.21691393', 'stop_lon': '105.5509222'}
+{'\ufeffstop_id': '0YLC06', 'stop_name': 'Cổng làng Bình Lâm', 'stop_lat': '21.22115776', 'stop_lon': '105.5615107'}
+{'\ufeffstop_id': '0YLC07', 'stop_name': 'UBND xã Tam Hồng', 'stop_lat': '21.22302122', 'stop_lon': '105.5661688'}
+{'\ufeffstop_id': '0YLC08', 'stop_name': 'Ngã ba Gốc Đề', 'stop_lat': '21.22640509', 'stop_lon': '105.5719654'}
+{'\ufeffstop_id': '0YLC09', 'stop_name': 'Cổng Bệnh viện huyện Yên Lạc', 'stop_lat': '21.23021076', 'stop_lon': '105.573362'}
+{'\ufeffstop_id': '0YLC10', 'stop_name': 'UBND huyện Yên Lạc', 'stop_lat': '21.23392144', 'stop_lon': '105.5743477'}
+{'\ufeffstop_id': '0YLC11', 'stop_name': 'Trường THCS Yên Lạc', 'stop_lat': '21.2341174', 'stop_lon': '105.5798599'}
+{'\ufeffstop_id': '0YLC12', 'stop_name': 'Cổng làng Vĩnh Đông', 'stop_lat': '21.23396577', 'stop_lon': '105.5842831'}
+{'\ufeffstop_id': '0YLC13', 'stop_name': 'Chùa Biện Sơn', 'stop_lat': '21.23118289', 'stop_lon': '105.5902457'}
+{'\ufeffstop_id': '0YLC14', 'stop_name': 'Cầu Trắng Đinh Xá', 'stop_lat': '21.22447809', 'stop_lon': '105.6087448'}
+{'\ufeffstop_id': '1BXN01', 'stop_name': 'Kếu', 'stop_lat': '21.24454606', 'stop_lon': '105.6769967'}
+{'\ufeffstop_id': '1BXN02', 'stop_name': 'Thép Việt Đức', 'stop_lat': '21.24903624', 'stop_lon': '105.6726303'}
+{'\ufeffstop_id': '1BXN03', 'stop_name': 'Cổng KCN Bình Xuyên', 'stop_lat': '21.25629529', 'stop_lon': '105.6657241'}
+{'\ufeffstop_id': '1BXN04', 'stop_name': 'Ngã 3 Đầm Cả', 'stop_lat': '21.26119341', 'stop_lon': '105.6555625'}
+{'\ufeffstop_id': '1BXN05', 'stop_name': 'Chi cục Thuế Bình Xuyên', 'stop_lat': '21.26588284', 'stop_lon': '105.6528205'}
+{'\ufeffstop_id': '1BXN06', 'stop_name': 'Chợ Hương Canh', 'stop_lat': '21.27164751', 'stop_lon': '105.650578'}
+{'\ufeffstop_id': '1BXN07', 'stop_name': 'UBND Bình Xuyên', 'stop_lat': '21.27546541', 'stop_lon': '105.6490248'}
+{'\ufeffstop_id': '1BXN08', 'stop_name': 'Công an huyện Bình Xuyên', 'stop_lat': '21.27879755', 'stop_lon': '105.646431'}
+{'\ufeffstop_id': '1BXN09', 'stop_name': 'Cầu các', 'stop_lat': '21.28077479', 'stop_lon': '105.6418093'}
+{'\ufeffstop_id': '1BXN10', 'stop_name': 'Ngã 4 QL2', 'stop_lat': '21.28285676', 'stop_lon': '105.6360052'}
+{'\ufeffstop_id': '1BXN11', 'stop_name': 'Cổng làng Láng 1', 'stop_lat': '21.23334165', 'stop_lon': '105.6139308'}
+{'\ufeffstop_id': '1BXN12', 'stop_name': 'Cổng làng Láng 2', 'stop_lat': '21.2407161', 'stop_lon': '105.6234934'}
+{'\ufeffstop_id': '1BXN13', 'stop_name': 'Ngã tư Thanh Lãng', 'stop_lat': '21.24592747', 'stop_lon': '105.6305243'}
+{'\ufeffstop_id': '1BXN14', 'stop_name': 'Xã Tân Phong', 'stop_lat': '21.2503086', 'stop_lon': '105.637199'}
+{'\ufeffstop_id': '1BXN15', 'stop_name': 'Đầu đường xã Tân Phong', 'stop_lat': '21.25393063', 'stop_lon': '105.6392133'}
+{'\ufeffstop_id': '1BXN16', 'stop_name': 'Công ty Piaggio Việt Nam', 'stop_lat': '21.2610984', 'stop_lon': '105.6687055'}
+{'\ufeffstop_id': '1BXN17', 'stop_name': 'Xí nghiệp dụng cụ giao thông Giai Việt', 'stop_lat': '21.26561703', 'stop_lon': '105.6702916'}
+{'\ufeffstop_id': '1BXN18', 'stop_name': 'Trung tâm Logistic ICD Vĩnh Phúc', 'stop_lat': '21.27367852', 'stop_lon': '105.6731101'}
+{'\ufeffstop_id': '1BXN19', 'stop_name': 'Tập đoàn Vina Top', 'stop_lat': '21.28737391', 'stop_lon': '105.6700319'}
+{'\ufeffstop_id': '1BXN20', 'stop_name': 'Ngã ba đi Hương Canh', 'stop_lat': '21.29676825', 'stop_lon': '105.6729996'}
+{'\ufeffstop_id': '1BXN21', 'stop_name': 'KCN Bình Xuyên 2', 'stop_lat': '21.3036', 'stop_lon': '105.6799285'}
+{'\ufeffstop_id': '1BXN22', 'stop_name': 'KCN Bá Thiện 1', 'stop_lat': '21.31859686', 'stop_lon': '105.6834469'}
+{'\ufeffstop_id': '1BXN23', 'stop_name': 'Nhà thờ Bảo Sơn', 'stop_lat': '21.32892616', 'stop_lon': '105.6859222'}
+{'\ufeffstop_id': '1BXN24', 'stop_name': 'Đối diện Cổng KCN Bá Thiện 2', 'stop_lat': '21.33712819', 'stop_lon': '105.6755988'}
+{'\ufeffstop_id': '1BXN25', 'stop_name': 'Công ty SamJin Vina', 'stop_lat': '21.33968748', 'stop_lon': '105.6722845'}
+{'\ufeffstop_id': '1BXN26', 'stop_name': 'Công ty DST Vina', 'stop_lat': '21.34521534', 'stop_lon': '105.6693205'}
+{'\ufeffstop_id': '1BXN27', 'stop_name': 'Công ty ActRo Vina', 'stop_lat': '21.34559891', 'stop_lon': '105.671113'}
+{'\ufeffstop_id': '1BXN28', 'stop_name': 'Công ty Sơn Nippon', 'stop_lat': '21.34039939', 'stop_lon': '105.6747709'}
+{'\ufeffstop_id': '1BXN29', 'stop_name': 'Cổng KCN Bá Thiện 2', 'stop_lat': '21.33738802', 'stop_lon': '105.6756256'}
+{'\ufeffstop_id': '1BXN30', 'stop_name': 'Ngã ba KCN Bá Thiện', 'stop_lat': '21.33496113', 'stop_lon': '105.6887076'}
+{'\ufeffstop_id': '1BXN31', 'stop_name': 'Ngã tư Trung Mỹ Bá Hiến', 'stop_lat': '21.33407405', 'stop_lon': '105.6936576'}
+{'\ufeffstop_id': '1BXN32', 'stop_name': 'Hạt Quản lý đường bộ', 'stop_lat': '21.33162133', 'stop_lon': '105.6988281'}
+{'\ufeffstop_id': '1HNI01', 'stop_name': 'Mê Linh Plaza', 'stop_lat': '21.18646123', 'stop_lon': '105.7806005'}
+{'\ufeffstop_id': '1HNI02', 'stop_name': 'Đầu làng Gia Trung', 'stop_lat': '21.19282154', 'stop_lon': '105.7807637'}
+{'\ufeffstop_id': '1HNI03', 'stop_name': 'Trạm thu phí Nội Bài', 'stop_lat': '21.20476687', 'stop_lon': '105.7798765'}
+{'\ufeffstop_id': '1HNI04', 'stop_name': 'Ngã tư Cao tốc Nội Bài', 'stop_lat': '21.21486663', 'stop_lon': '105.7787463'}
+{'\ufeffstop_id': '1HNI05', 'stop_name': 'Ngã 3 Nỉ', 'stop_lat': '21.21872525', 'stop_lon': '105.7752021'}
+{'\ufeffstop_id': '1HNI06', 'stop_name': 'Bưu điện Kim Anh', 'stop_lat': '21.22780444', 'stop_lon': '105.7611462'}
+{'\ufeffstop_id': '1HNI07', 'stop_name': 'Ngã 3 vinaco', 'stop_lat': '21.23599552', 'stop_lon': '105.7463503'}
+{'\ufeffstop_id': '1HNI08', 'stop_name': 'Trạm thu phí QL2', 'stop_lat': '21.23803088', 'stop_lon': '105.7430157'}
+{'\ufeffstop_id': '1HNI09', 'stop_name': 'Cầu Xây - Cầu Xuân Phương', 'stop_lat': '21.24037455', 'stop_lon': '105.7384523'}
+{'\ufeffstop_id': '1HNI10', 'stop_name': 'Bến xe Thanh Lâm', 'stop_lat': '21.21684464', 'stop_lon': '105.7038592'}
+{'\ufeffstop_id': '1PYN01', 'stop_name': 'Honda Phúc Yên', 'stop_lat': '21.236674', 'stop_lon': '105.7215441'}
+{'\ufeffstop_id': '1PYN02', 'stop_name': 'Toyota Phúc Yên', 'stop_lat': '21.23176581', 'stop_lon': '105.7116483'}
+{'\ufeffstop_id': '1PYN03', 'stop_name': 'Nghĩa trang Phúc Yên', 'stop_lat': '21.23113337', 'stop_lon': '105.6998716'}
+{'\ufeffstop_id': '1PYN04', 'stop_name': 'Nhà hàng Ánh Tuyết', 'stop_lat': '21.23110673', 'stop_lon': '105.6948016'}
+{'\ufeffstop_id': '1PYN05', 'stop_name': 'Cầu Tiền Châu', 'stop_lat': '21.23345477', 'stop_lon': '105.6897862'}
+{'\ufeffstop_id': '1PYN06', 'stop_name': 'Ngã ba đi Đèo Nhe', 'stop_lat': '21.32792618', 'stop_lon': '105.7033405'}
+{'\ufeffstop_id': '1PYN07', 'stop_name': 'Ngõ 12 Phạm Văn Đồng', 'stop_lat': '21.30312803', 'stop_lon': '105.7151594'}
+{'\ufeffstop_id': '1PYN08', 'stop_name': 'Cổng Nhà máy Xe đạp Xuân Hòa', 'stop_lat': '21.29842551', 'stop_lon': '105.7125703'}
+{'\ufeffstop_id': '1PYN09', 'stop_name': 'Xí nghiệp Điện quang 23', 'stop_lat': '21.29503096', 'stop_lon': '105.7141901'}
+{'\ufeffstop_id': '1PYN10', 'stop_name': 'Trường Cao đẳng nghề Cơ điện', 'stop_lat': '21.28618665', 'stop_lon': '105.7182585'}
+{'\ufeffstop_id': '1PYN11', 'stop_name': 'KTX ĐH Sư phạm 2', 'stop_lat': '21.28221401', 'stop_lon': '105.7232836'}
+{'\ufeffstop_id': '1PYN12', 'stop_name': 'Đại học Sư phạm 2', 'stop_lat': '21.28077597', 'stop_lon': '105.7259867'}
+{'\ufeffstop_id': '1PYN13', 'stop_name': 'Ngã tư Xuân Hòa', 'stop_lat': '21.27707315', 'stop_lon': '105.7290713'}
+{'\ufeffstop_id': '1PYN14', 'stop_name': 'Viettinbank Xuân Hòa', 'stop_lat': '21.27448771', 'stop_lon': '105.726433'}
+{'\ufeffstop_id': '1PYN15', 'stop_name': 'Cây xăng Xuân Hòa', 'stop_lat': '21.27085679', 'stop_lon': '105.7243373'}
+{'\ufeffstop_id': '1PYN16', 'stop_name': 'Khu đô thị Xuân Hòa', 'stop_lat': '21.26509307', 'stop_lon': '105.7220593'}
+{'\ufeffstop_id': '1PYN17', 'stop_name': 'Cầu Khả Do', 'stop_lat': '21.26126049', 'stop_lon': '105.719102'}
+{'\ufeffstop_id': '1PYN18', 'stop_name': 'UBND xã Nam Viêm', 'stop_lat': '21.25904265', 'stop_lon': '105.7153959'}
+{'\ufeffstop_id': '1PYN19', 'stop_name': 'Ngõ 16 Trần Phú', 'stop_lat': '21.25450748', 'stop_lon': '105.713663'}
+{'\ufeffstop_id': '1PYN20', 'stop_name': 'Ngõ 12 Trần Phú', 'stop_lat': '21.2491451', 'stop_lon': '105.7118119'}
+{'\ufeffstop_id': '1PYN21', 'stop_name': 'Cổng xí nghiệp Cơ khí 2', 'stop_lat': '21.24338546', 'stop_lon': '105.7103722'}
+{'\ufeffstop_id': '1PYN22', 'stop_name': 'Tòa nhà Tuấn Tài', 'stop_lat': '21.23992568', 'stop_lon': '105.7084569'}
+{'\ufeffstop_id': '1PYN23', 'stop_name': 'Quảng trường Phúc Yên', 'stop_lat': '21.2370157', 'stop_lon': '105.7063211'}
+{'\ufeffstop_id': '1PYN24', 'stop_name': 'Ngân hàng Công thương Phúc Yên', 'stop_lat': '21.23521569', 'stop_lon': '105.7057973'}
+{'\ufeffstop_id': '1PYN25', 'stop_name': 'Ngã tư Phúc Yên', 'stop_lat': '21.23024894', 'stop_lon': '105.7062679'}
+{'\ufeffstop_id': '1PYN26', 'stop_name': 'Cổng Bệnh viện 74', 'stop_lat': '21.22545376', 'stop_lon': '105.704905'}
+{'\ufeffstop_id': '1TDG01', 'stop_name': 'Cây xăng Quân đội Hợp Thịnh', 'stop_lat': '21.2880856', 'stop_lon': '105.5461768'}
+{'\ufeffstop_id': '1VTG01', 'stop_name': 'Đồng Văn', 'stop_lat': '21.28440408', 'stop_lon': '105.5358881'}
+{'\ufeffstop_id': '1VTG02', 'stop_name': 'Chợ Kiệu', 'stop_lat': '21.2793927', 'stop_lon': '105.5216398'}
+{'\ufeffstop_id': '1VTG03', 'stop_name': 'Ngã 5 Chấn Hưng', 'stop_lat': '21.27849206', 'stop_lon': '105.5130009'}
+{'\ufeffstop_id': '1VTG04', 'stop_name': 'Đại Đồng', 'stop_lat': '21.27806042', 'stop_lon': '105.5059492'}
+{'\ufeffstop_id': '1VTG05', 'stop_name': 'Tân Tiến', 'stop_lat': '21.2779107', 'stop_lon': '105.4898693'}
+{'\ufeffstop_id': '1VTG06', 'stop_name': 'Bến xe Vĩnh Tường', 'stop_lat': '21.27858232', 'stop_lon': '105.4856659'}
+{'\ufeffstop_id': '1VTG07', 'stop_name': 'Dốc Đồi Me', 'stop_lat': '21.27986935', 'stop_lon': '105.4697822'}
+{'\ufeffstop_id': '1VTG08', 'stop_name': 'Ngã 3 Trường Nghề - Lũng Hòa', 'stop_lat': '21.2792126', 'stop_lon': '105.4645016'}
+{'\ufeffstop_id': '1VTG09', 'stop_name': 'Hòa Loan', 'stop_lat': '21.27831986', 'stop_lon': '105.4610887'}
+{'\ufeffstop_id': '1VTG10', 'stop_name': 'Bồ Sao (Bến xe bus Bồ Sao)', 'stop_lat': '21.27907405', 'stop_lon': '105.454625'}
+{'\ufeffstop_id': '1VTG11', 'stop_name': 'Km 12 QL2C xã Đồng Văn', 'stop_lat': '21.24965972', 'stop_lon': '105.5376731'}
+{'\ufeffstop_id': '1VTG12', 'stop_name': 'Công an PCCC Vĩnh Tường', 'stop_lat': '21.24470954', 'stop_lon': '105.5344863'}
+{'\ufeffstop_id': '1VTG13', 'stop_name': 'Ngã tư Vân Xuân', 'stop_lat': '21.23596105', 'stop_lon': '105.5289178'}
+{'\ufeffstop_id': '1VTG14', 'stop_name': 'Cầu Xuân Lai', 'stop_lat': '21.22982577', 'stop_lon': '105.5252756'}
+{'\ufeffstop_id': '1VTG15', 'stop_name': 'Cổng làng Vũ Di', 'stop_lat': '21.22437986', 'stop_lon': '105.5211792'}
+{'\ufeffstop_id': '1VTG16', 'stop_name': 'Bệnh viện đa khoa Vĩnh Tường', 'stop_lat': '21.22090911', 'stop_lon': '105.5181932'}
+{'\ufeffstop_id': '1VTG17', 'stop_name': 'Ngã tư Vũ Di', 'stop_lat': '21.21611051', 'stop_lon': '105.5134983'}
+{'\ufeffstop_id': '1VTG18', 'stop_name': 'Nhà văn hóa TT Vĩnh Tường', 'stop_lat': '21.21851427', 'stop_lon': '105.5110927'}
+{'\ufeffstop_id': '1VTG19', 'stop_name': 'SVĐ Vĩnh Tường', 'stop_lat': '21.22305587', 'stop_lon': '105.506697'}
+{'\ufeffstop_id': '1VTG20', 'stop_name': 'Trường THPT Lê Xoay', 'stop_lat': '21.22591139', 'stop_lon': '105.5029148'}
+{'\ufeffstop_id': '1VTG21', 'stop_name': 'Ngã ba Thượng Trưng', 'stop_lat': '21.22835404', 'stop_lon': '105.4964794'}
+{'\ufeffstop_id': '1VTG22', 'stop_name': 'TTTM Phúc Sơn - Thổ Tang', 'stop_lat': '21.23999257', 'stop_lon': '105.4916641'}
+{'\ufeffstop_id': '1VTG23', 'stop_name': 'Nghĩa trang Thổ Tang', 'stop_lat': '21.2471138', 'stop_lon': '105.489671'}
+{'\ufeffstop_id': '1VTG24', 'stop_name': 'Đường rẽ Xóm Thụ', 'stop_lat': '21.24431449', 'stop_lon': '105.4844202'}
+{'\ufeffstop_id': '1VTG25', 'stop_name': 'UBND xã Thượng Trưng', 'stop_lat': '21.23963411', 'stop_lon': '105.4787895'}
+{'\ufeffstop_id': '1VTG26', 'stop_name': 'Trường TH Thượng Trưng', 'stop_lat': '21.2392378', 'stop_lon': '105.4772049'}
+{'\ufeffstop_id': '1VTG27', 'stop_name': 'Trường THCS Tân Phú', 'stop_lat': '21.24103889', 'stop_lon': '105.4708896'}
+{'\ufeffstop_id': '1VTG28', 'stop_name': 'Bưu điện Tân Phú', 'stop_lat': '21.24185752', 'stop_lon': '105.4669995'}
+{'\ufeffstop_id': '1VTG29', 'stop_name': 'Đê Tân Phú', 'stop_lat': '21.24346508', 'stop_lon': '105.4589233'}
+{'\ufeffstop_id': '1VTG30', 'stop_name': 'Đường rẽ xóm Bãi Xã', 'stop_lat': '21.24701407', 'stop_lon': '105.4569036'}
+{'\ufeffstop_id': '1VTG31', 'stop_name': 'UBND xã Cao Đại', 'stop_lat': '21.25080671', 'stop_lon': '105.45347'}
+{'\ufeffstop_id': '1VTG32', 'stop_name': 'Bến xe khách TT Vĩnh Tường', 'stop_lat': '21.21432757', 'stop_lon': '105.5146845'}
+{'\ufeffstop_id': '1VTG33', 'stop_name': 'UBND xã Tứ Trưng', 'stop_lat': '21.20896446', 'stop_lon': '105.5198578'}
+{'\ufeffstop_id': '1VTG34', 'stop_name': 'HTX Tứ Trưng', 'stop_lat': '21.20461837', 'stop_lon': '105.5221878'}
+{'\ufeffstop_id': '1VTG35', 'stop_name': 'Đầu đường rẽ đi Yên Đồng', 'stop_lat': '21.20214185', 'stop_lon': '105.5248345'}
+{'\ufeffstop_id': '1VTG36', 'stop_name': 'Thôn Thị - Tứ Trưng', 'stop_lat': '21.20477915', 'stop_lon': '105.5287274'}
+{'\ufeffstop_id': '1VYN00', 'stop_name': 'Big C Vĩnh Phúc', 'stop_lat': '21.29448867', 'stop_lon': '105.6306133'}
+{'\ufeffstop_id': '1VYN01', 'stop_name': 'Bến xe vĩnh Yên', 'stop_lat': '21.30106823', 'stop_lon': '105.6268'}
+{'\ufeffstop_id': '1VYN02', 'stop_name': 'Công ty Power', 'stop_lat': '21.30441633', 'stop_lon': '105.6249'}
+{'\ufeffstop_id': '1VYN03', 'stop_name': 'Công ty vina Korea', 'stop_lat': '21.30959899', 'stop_lon': '105.6242'}
+{'\ufeffstop_id': '1VYN04', 'stop_name': 'Công ty Shinwon', 'stop_lat': '21.31205532', 'stop_lon': '105.6231'}
+{'\ufeffstop_id': '1VYN05', 'stop_name': 'Sở Cảnh sát & PCCC', 'stop_lat': '21.31499863', 'stop_lon': '105.6197309'}
+{'\ufeffstop_id': '1VYN06', 'stop_name': 'Co.opmart Vĩnh Phúc', 'stop_lat': '21.31268623', 'stop_lon': '105.6149549'}
+{'\ufeffstop_id': '1VYN07', 'stop_name': 'Chi cục Dân số KHHGĐ', 'stop_lat': '21.31314352', 'stop_lon': '105.6117381'}
+{'\ufeffstop_id': '1VYN08', 'stop_name': 'Ngân hàng ACB', 'stop_lat': '21.31471677', 'stop_lon': '105.6066523'}
+{'\ufeffstop_id': '1VYN09', 'stop_name': 'Đầu đường Bà Triệu', 'stop_lat': '21.31384306', 'stop_lon': '105.6006107'}
+{'\ufeffstop_id': '1VYN10', 'stop_name': 'Đường Kim Ngọc', 'stop_lat': '21.31295878', 'stop_lon': '105.596253'}
+{'\ufeffstop_id': '1VYN11', 'stop_name': 'Kho bạc tỉnh Vĩnh Phúc', 'stop_lat': '21.30954748', 'stop_lon': '105.5940813'}
+{'\ufeffstop_id': '1VYN12', 'stop_name': 'UBND TP Vĩnh Yên', 'stop_lat': '21.30884311', 'stop_lon': '105.5898164'}
+{'\ufeffstop_id': '1VYN13', 'stop_name': 'Công An Phường Tích Sơn', 'stop_lat': '21.30762081', 'stop_lon': '105.5838779'}
+{'\ufeffstop_id': '1VYN14', 'stop_name': 'Cầu Oai', 'stop_lat': '21.30645698', 'stop_lon': '105.5761083'}
+{'\ufeffstop_id': '1VYN15', 'stop_name': 'Ngã ba Tam Dương', 'stop_lat': '21.30610016', 'stop_lon': '105.572654'}
+{'\ufeffstop_id': '1VYN16', 'stop_name': 'Bưu cục Đồng Tâm', 'stop_lat': '21.30511407', 'stop_lon': '105.5676001'}
+{'\ufeffstop_id': '1VYN17', 'stop_name': 'Cao đẳng Kinh tế Kỹ thuật Vĩnh Phúc', 'stop_lat': '21.30175349', 'stop_lon': '105.5625499'}
+{'\ufeffstop_id': '1VYN18', 'stop_name': 'Ngã tư Quán Tiên', 'stop_lat': '21.29957884', 'stop_lon': '105.5599036'}
+{'\ufeffstop_id': '1VYN19', 'stop_name': 'Trường THPT Vĩnh Yên', 'stop_lat': '21.29644547', 'stop_lon': '105.5562181'}
+{'\ufeffstop_id': '1VYN20', 'stop_name': 'Ngã tư Hợp Thịnh', 'stop_lat': '21.29402489', 'stop_lon': '105.5534104'}
+{'\ufeffstop_id': '1YLC01', 'stop_name': 'Bệnh viện Sản nhi', 'stop_lat': '21.28115166', 'stop_lon': '105.5422418'}
+{'\ufeffstop_id': '1YLC02', 'stop_name': 'UBND xã Đồng Văn', 'stop_lat': '21.26929125', 'stop_lon': '105.5423934'}
+{'\ufeffstop_id': '1YLC03', 'stop_name': 'Ngã tư Đồng Lạc', 'stop_lat': '21.26013482', 'stop_lon': '105.5397068'}
+{'\ufeffstop_id': '1YLC04', 'stop_name': 'Trường Tiểu học Yên Đồng', 'stop_lat': '21.21498619', 'stop_lon': '105.5459875'}
+{'\ufeffstop_id': '1YLC05', 'stop_name': 'Yên Đồng', 'stop_lat': '21.21694504', 'stop_lon': '105.5507537'}
+{'\ufeffstop_id': '1YLC06', 'stop_name': 'Cổng làng Bình Lâm', 'stop_lat': '21.22113935', 'stop_lon': '105.5612394'}
+{'\ufeffstop_id': '1YLC07', 'stop_name': 'UBND xã Tam Hồng', 'stop_lat': '21.22324818', 'stop_lon': '105.5666226'}
+{'\ufeffstop_id': '1YLC08', 'stop_name': 'Ngã ba Gốc Đề', 'stop_lat': '21.22634804', 'stop_lon': '105.5719029'}
+{'\ufeffstop_id': '1YLC09', 'stop_name': 'Cổng Bệnh viện huyện Yên Lạc', 'stop_lat': '21.23152164', 'stop_lon': '105.5735348'}
+{'\ufeffstop_id': '1YLC10', 'stop_name': 'UBND huyện Yên Lạc', 'stop_lat': '21.23412327', 'stop_lon': '105.5743477'}
+{'\ufeffstop_id': '1YLC11', 'stop_name': 'Trường THCS Yên Lạc', 'stop_lat': '21.2341404', 'stop_lon': '105.5800385'}
+{'\ufeffstop_id': '1YLC12', 'stop_name': 'Cổng làng Vĩnh Đông', 'stop_lat': '21.23407541', 'stop_lon': '105.5837888'}
+{'\ufeffstop_id': '1YLC13', 'stop_name': 'Chùa Biện Sơn', 'stop_lat': '21.23152715', 'stop_lon': '105.5896758'}
+{'\ufeffstop_id': '1YLC14', 'stop_name': 'Cầu Trắng Đinh Xá', 'stop_lat': '21.22434714', 'stop_lon': '105.6090531'}

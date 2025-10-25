@@ -1,0 +1,36 @@
+[versions]
+agp = "8.11.0"
+junit = "4.13.2"
+junitVersion = "1.2.1"
+espressoCore = "3.6.1"
+appcompat = "1.6.1"
+material = "1.10.0"
+playServicesMaps = "19.2.0"
+playServiceLocation = "21.0.1"
+constraintlayout = "2.2.1"
+legacySupportV4 = "1.0.0"
+recyclerview = "1.4.0"
+mapsforge = "0.25.0"
+room = "2.7.2"
+
+[libraries]
+junit = { group = "junit", name = "junit", version.ref = "junit" }
+ext-junit = { group = "androidx.test.ext", name = "junit", version.ref = "junitVersion" }
+espresso-core = { group = "androidx.test.espresso", name = "espresso-core", version.ref = "espressoCore" }
+appcompat = { group = "androidx.appcompat", name = "appcompat", version.ref = "appcompat" }
+material = { group = "com.google.android.material", name = "material", version.ref = "material" }
+play-services-maps = { group = "com.google.android.gms", name = "play-services-maps", version.ref = "playServicesMaps" }
+play-services-location = {group = "com.google.android.gms", name = "play-services-location", version.ref = "playServiceLocation"}
+constraintlayout = { group = "androidx.constraintlayout", name = "constraintlayout", version.ref = "constraintlayout" }
+legacy-support-v4 = { group = "androidx.legacy", name = "legacy-support-v4", version.ref = "legacySupportV4" }
+recyclerview = { group = "androidx.recyclerview", name = "recyclerview", version.ref = "recyclerview" }
+mapsforge-map-android = {group = "org.mapsforge", name = "mapsforge-map-android", version.ref = "mapsforge"}
+mapsforge-core = {group = "org.mapsforge", name = "mapsforge-core", version.ref = "mapsforge"}
+mapsforge-map-reader = {group = "org.mapsforge", name = "mapsforge-map-reader", version.ref = "mapsforge"}
+mapsforge-map = {group = "org.mapsforge", name = "mapsforge-map", version.ref = "mapsforge"}
+room-compiler = {group = "androidx.room", name = "room-compiler", version.ref = "room"}
+room-runtime = {group = "androidx.room", name = "room-runtime", version.ref = "room"}
+
+[plugins]
+android-application = { id = "com.android.application", version.ref = "agp" }
+

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="NavigationButton" parent="Widget.AppCompat.Button">
+        <item name="android:backgroundTint">#FFFFFF</item>
+        <item name="android:textColor">#000000</item>
+        <item name="android:textSize">12sp</item>
+        <item name="android:textAllCaps">false</item>
+        <item name="android:drawablePadding">3dp</item>
+    </style>
+
+    <style name="StopsPageButton" parent="Widget.AppCompat.Button">
+        <item name="android:backgroundTint">#FFFFFF</item>
+        <item name="android:textColor">#BB0000</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:textAllCaps">false</item>
+        <item name="android:drawablePadding">3dp</item>
+    </style>
+
+</resources>
