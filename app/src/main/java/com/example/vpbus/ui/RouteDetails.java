@@ -1,6 +1,8 @@
 package com.example.vpbus.ui;
 
 import android.graphics.Bitmap;
+import android.graphics.Color;
+import android.graphics.Paint;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Gravity;
@@ -21,16 +23,21 @@ import androidx.viewpager2.widget.ViewPager2;
 import com.example.vpbus.R;
 import com.example.vpbus.data.AppDatabase;
 import com.example.vpbus.model.BusRoute;
+import com.example.vpbus.model.BusShape;
 import com.example.vpbus.model.BusStop;
 import com.example.vpbus.ui.BottomSheetPage.RDBottomSheetPageAdapter;
 import com.example.vpbus.ui.fragments.RouteListStopsFragment;
 import com.example.vpbus.util.DrawUtil;
 import com.example.vpbus.util.MapMode;
 import com.example.vpbus.util.NavigationUtil;
+import com.google.android.gms.maps.model.Marker;
+import com.google.android.gms.maps.model.Polyline;
 import com.google.android.material.bottomsheet.BottomSheetBehavior;
 import com.google.android.material.tabs.TabLayout;
 import com.google.android.material.tabs.TabLayoutMediator;
 
+import org.mapsforge.core.graphics.Style;
+import org.mapsforge.core.model.LatLong;
 import org.mapsforge.map.android.graphics.AndroidGraphicFactory;
 import org.mapsforge.map.android.view.MapView;
 
@@ -43,11 +50,9 @@ public class RouteDetails extends AppCompatActivity {
     private boolean isPopupVisible = false;
     private MapView mapView;
     private MapsManager mapsManager = new MapsManager();
-    private RecyclerView recyclerViewStops;
-    private StopAdapter stopAdapter;
-    private AppDatabase db;
     private boolean isReversed = false;
     private List<BusStop> currentStops = new ArrayList<>();
+    private List<BusShape> currentShape = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -62,21 +67,26 @@ public class RouteDetails extends AppCompatActivity {
         }
         EdgeToEdge.enable(this);
 
+        //set view, button
         TextView routeName = findViewById(R.id.route_name);
         TextView firstDir = findViewById(R.id.first_dir);
         TextView secondDir = findViewById(R.id.second_dir);
 
-
         ImageButton back = findViewById(R.id.backButton);
-        back.setOnClickListener(view ->{
-            NavigationUtil.goTo(this, RouteActivity.class);
-        });
+        ImageButton infoButton = findViewById(R.id.info);
 
         Bundle args = new Bundle();
         args.putString(MapMode.ARG_MODE, MapMode.MODE_ROUTE_DETAILS); // hoặc MODE_DIRECTION, ...
 
+        /***set event cho button
+         *
+         */
+        //button quay lại
+        back.setOnClickListener(view ->{
+            NavigationUtil.goTo(this, RouteActivity.class);
+        });
 
-        ImageButton infoButton = findViewById(R.id.info);
+        //button thông tin (i)
         infoButton.setOnClickListener(view ->{
             if (isPopupVisible && popupWindow != null) {
                 popupWindow.dismiss();
@@ -91,9 +101,7 @@ public class RouteDetails extends AppCompatActivity {
                         ViewGroup.LayoutParams.WRAP_CONTENT,
                         true
                 );
-
-    //            popupWindow.setBackgroundDrawable(ContextCompat.getDrawable(this, R.drawable.popup_background));
-
+                //  popupWindow.setBackgroundDrawable(ContextCompat.getDrawable(this, R.drawable.popup_background));
                 int[] location = new int[2];
                 infoButton.getLocationOnScreen(location);
                 int anchorX = location[0];
@@ -109,6 +117,7 @@ public class RouteDetails extends AppCompatActivity {
             }
         });
 
+        //set map
         mapView = findViewById(R.id.mapView);
 
         try {
@@ -117,26 +126,37 @@ public class RouteDetails extends AppCompatActivity {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        AppDatabase db = AppDatabase.getInstance(this);
 
         // Lấy thông tin tuyến
+        AppDatabase db = AppDatabase.getInstance(this);
         new Thread(() -> {
+            // Xác định tuyến
             BusRoute route = db.busRouteDao().getRouteByShortName(routeShortName);
 
+            // Xác định chuyến
             List<String> tripIds = db.tripDao().getTripIdsByShortName(routeShortName);
             if (tripIds == null || tripIds.isEmpty()) return;
             String tripId = tripIds.get(0);
 
+            // Xác định điểm dừng
             List<BusStop> stops = db.busStopsDao().getStopsByTrip(tripId);
+            currentStops = stops;
             if (stops == null || stops.isEmpty()) return;
 
             BusStop firstStop = stops.get(0);
             BusStop lastStop = stops.get(stops.size() - 1);
 
+            // Xác định shape
+            String shapeId = "shape_" + routeShortName + "_0";
+            List<BusShape> shapePoints = db.busShapeDao().getShapePoints(shapeId);
+            currentShape = shapePoints;
+
             runOnUiThread(() -> {
                 if (route != null)
                     routeName.setText(route.getLong_name()); // "VP01 : Bồ Sao - Mê Linh Plaza"
 
+                //vẽ lần đầu
+                mapsManager.renderRoute(mapView, shapePoints, stops, this);
                 firstDir.setText("Chiều đi: " + firstStop.getStop_name());
                 secondDir.setText("Chiều về: " + lastStop.getStop_name());
             });
@@ -153,6 +173,12 @@ public class RouteDetails extends AppCompatActivity {
             CharSequence temp = firstDir.getText();
             firstDir.setText(secondDir.getText());
             secondDir.setText(temp);
+
+            java.util.Collections.reverse(currentStops);
+            java.util.Collections.reverse(currentShape);
+
+            //Cập nhật vẽ trên map
+            mapsManager.renderRoute(mapView, currentShape, currentStops, this);
 
             // Gửi tín hiệu cho fragment hiện tại (Trạm dừng)
             RouteListStopsFragment fragment =
@@ -204,5 +230,6 @@ public class RouteDetails extends AppCompatActivity {
         super.onDestroy();
         mapsManager.onDestroy(mapView);
     }
+
 
 }
