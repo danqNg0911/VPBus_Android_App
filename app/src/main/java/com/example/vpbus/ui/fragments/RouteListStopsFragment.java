@@ -1,5 +1,6 @@
 package com.example.vpbus.ui.fragments;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -14,7 +15,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.vpbus.R;
 import com.example.vpbus.data.AppDatabase;
 import com.example.vpbus.model.BusStop;
-import com.example.vpbus.ui.StopAdapter;
+import com.example.vpbus.ui.Adapters.StopAdapter;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -27,6 +28,11 @@ public class RouteListStopsFragment extends Fragment {
     private StopAdapter stopAdapter;
     private AppDatabase db;
     private final List<BusStop> currentStops = new ArrayList<>();
+    private StopSelectionCallback callback;
+
+    public interface StopSelectionCallback {
+        void onStopSelected(BusStop stop);
+    }
 
     public static RouteListStopsFragment newInstance(String routeShortName) {
         RouteListStopsFragment fragment = new RouteListStopsFragment();
@@ -57,6 +63,9 @@ public class RouteListStopsFragment extends Fragment {
         recyclerView.setAdapter(stopAdapter);
 
         loadStops();
+        stopAdapter.setOnStopClickListener((stop, position) -> {
+            if (callback != null) callback.onStopSelected(stop);
+        });
         return view;
     }
 
@@ -73,19 +82,28 @@ public class RouteListStopsFragment extends Fragment {
                 currentStops.clear();
                 currentStops.addAll(stops);
 
-                stopAdapter = new StopAdapter(requireContext(), new ArrayList<>(currentStops));
+                stopAdapter.submitList(currentStops);
                 recyclerView.setAdapter(stopAdapter);
             });
         }).start();
     }
 
     public void reverseStops() {
-        if (currentStops != null && !currentStops.isEmpty()) {
+        if (!currentStops.isEmpty()) {
             Collections.reverse(currentStops);
-            stopAdapter = new StopAdapter(requireContext(), new ArrayList<>(currentStops));
-            recyclerView.setAdapter(stopAdapter);
+            stopAdapter.submitList(currentStops);
         }
     }
+
+
+    @Override
+    public void onAttach(@NonNull Context context) {
+        super.onAttach(context);
+        if (context instanceof StopSelectionCallback) {
+            callback = (StopSelectionCallback) context;
+        }
+    }
+
 
 }
 

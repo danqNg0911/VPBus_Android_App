@@ -32,13 +32,21 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class MapsManager {
     private TileRendererLayer tileRendererLayer;
     private TileCache tileCache;
     private Polyline routePolyline;
     private List<Marker> stopMarkers = new ArrayList<>();
+    private Marker highlightedMarker;
+    private Map<String, Marker> stopMarkerMap = new HashMap<>();
+    private Bitmap normalStopBitmap;
+    private Bitmap selectedStopBitmap;
+
+
 
     public void initMap(Context context, MapView mapView, String mapFileName, String themeFileName) throws IOException {
 
@@ -78,9 +86,8 @@ public class MapsManager {
                 105.6712   // maxLongitude
         );
 
-        MapViewPosition mapViewPosition = mapView.getModel().mapViewPosition;
-
-        mapViewPosition.setMapLimit(boundingBox);
+        //MapViewPosition mapViewPosition = mapView.getModel().mapViewPosition;
+        //mapViewPosition.setMapLimit(boundingBox);
 
 
     }
@@ -168,9 +175,20 @@ public class MapsManager {
     }
 
     public void drawBusStops(List<BusStop> stops, MapView mapView, Context context) {
-        Bitmap stopBitmap = AndroidGraphicFactory.INSTANCE.convertToBitmap(
-                ContextCompat.getDrawable(context, R.drawable.stop_point)
-        );
+        if (normalStopBitmap == null) {
+            normalStopBitmap = AndroidGraphicFactory.INSTANCE.convertToBitmap(
+                    ContextCompat.getDrawable(context, R.drawable.stop_point)
+            );
+        }
+
+        if (selectedStopBitmap == null) {
+            selectedStopBitmap = AndroidGraphicFactory.INSTANCE.convertToBitmap(
+                    ContextCompat.getDrawable(context, R.drawable.stop_point_2light)
+            );
+        }
+
+        stopMarkers.clear();
+        stopMarkerMap.clear();
 
         for (BusStop stop : stops) {
             LatLong latLong = new LatLong(
@@ -180,12 +198,13 @@ public class MapsManager {
 
             Marker marker = new Marker(
                     latLong,
-                    stopBitmap,
+                    normalStopBitmap,
                     0,
-                    -stopBitmap.getHeight() / 2
+                    -normalStopBitmap.getHeight() / 2
             );
 
             stopMarkers.add(marker);
+            stopMarkerMap.put(stop.getStop_id(), marker);
             mapView.getLayerManager().getLayers().add(marker);
         }
     }
@@ -206,10 +225,46 @@ public class MapsManager {
         clearRoutePolyline(mapView);
         clearBusStops(mapView);
 
+//        highlightedMarker = null;
+//        stopMarkerMap.clear();
+
         drawRoutePolyline(mapView, shapePoints, Color.parseColor("#BB0000"), 8f);
         drawBusStops(stops, mapView, context);
 
         mapView.invalidate();
     }
+
+    public void focusOnStop(MapView mapView, BusStop stop, Context context) {
+
+        // 1. pan map
+        mapView.getModel().mapViewPosition.setCenter(
+                new LatLong(stop.getStop_lat(), stop.getStop_lon())
+        );
+
+        // 2. reset marker cũ
+        if (highlightedMarker != null) {
+            mapView.getLayerManager().getLayers().remove(highlightedMarker);
+            highlightedMarker = null;
+        }
+
+        Marker oldNormal = stopMarkerMap.get(stop.getStop_id());
+        if (oldNormal != null) {
+            mapView.getLayerManager().getLayers().remove(oldNormal);
+        }
+
+        // 3. highlight marker mới
+        Marker highlightMarker = new Marker(
+                new LatLong(stop.getStop_lat(), stop.getStop_lon()),
+                selectedStopBitmap,
+                0,
+                -selectedStopBitmap.getHeight() / 2
+        );
+        mapView.getLayerManager().getLayers().add(highlightMarker);
+        highlightedMarker = highlightMarker;
+
+        // 4. refresh map
+        mapView.invalidate();
+    }
+
 
 }

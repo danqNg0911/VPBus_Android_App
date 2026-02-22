@@ -3,12 +3,12 @@ package com.example.vpbus.model;
 import java.util.List;
 
 public class SuggestedRoute {
-    private List<Leg> legs;
+    private List<JourneyLeg> journeyLegs;
     double totalEstimatedTime;
     int totalPrice;
 
-    public SuggestedRoute(List<Leg> legs) {
-        this.legs = legs;
+    public SuggestedRoute(List<JourneyLeg> journeyLegs) {
+        this.journeyLegs = journeyLegs;
     }
 
     public double getTotalEstimatedTime() {
@@ -31,14 +31,14 @@ public class SuggestedRoute {
      * Thay getter = add + remove
      * @param e
      */
-    public void addLegs(Leg e) {
-        legs.add(e);
+    public void addLegs(JourneyLeg e) {
+        journeyLegs.add(e);
     }
 
-    public void removeLegs(Leg e) {
-        legs.remove(e);
+    public void removeLegs(JourneyLeg e) {
+        journeyLegs.remove(e);
     }
-    public List<Leg> getLegs() {
-        return legs;
+    public List<JourneyLeg> getLegs() {
+        return journeyLegs;
     }
 }

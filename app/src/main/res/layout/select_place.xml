@@ -19,13 +19,11 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/searchLayout"
-        android:layout_width="409dp"
-        android:layout_height="180dp"
-        android:layout_marginStart="1dp"
-        android:layout_marginTop="1dp"
+        android:layout_width="411dp"
+        android:layout_height="230dp"
+        android:background="#363636"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:background="#363636">
+        app:layout_constraintTop_toTopOf="parent">
 
         <Button
             android:id="@+id/backButton"
@@ -33,62 +31,65 @@
             android:layout_height="48dp"
             android:layout_marginStart="4dp"
             android:layout_marginTop="10dp"
+            android:backgroundTint="#363636"
             android:contentDescription="Button"
             android:drawableTop="@drawable/arrow_back"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            android:backgroundTint="#363636"/>
+            app:layout_constraintTop_toTopOf="parent" />
 
-        <EditText
-            android:id="@+id/editTextText"
-            android:layout_width="320dp"
+        <Button
+            android:id="@+id/beginPick"
+            android:layout_width="300dp"
             android:layout_height="48dp"
             android:layout_marginStart="8dp"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="56dp"
             android:layout_marginEnd="8dp"
+            android:background="@drawable/rounded"
             android:ems="10"
             android:inputType="text"
             android:text="  Điểm đi"
             app:layout_constraintStart_toEndOf="@+id/backButton"
-            app:layout_constraintTop_toTopOf="parent"
-            android:background="@drawable/rounded"/>
+            app:layout_constraintTop_toTopOf="parent" />
+
 
         <Button
-            android:id="@+id/button5"
-            android:layout_width="48dp"
-            android:layout_height="48dp"
-            android:layout_marginTop="35dp"
-            android:layout_marginEnd="20dp"
-            android:contentDescription="Button"
-            android:drawableTop="@drawable/baseline_compare_arrows_24"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            android:background="@android:color/transparent"/>
-
-        <EditText
-            android:id="@+id/editTextText2"
-            android:layout_width="320dp"
+            android:id="@+id/endPick"
+            android:layout_width="300dp"
             android:layout_height="48dp"
             android:layout_marginStart="60dp"
-            android:layout_marginTop="8dp"
+            android:layout_marginTop="12dp"
+            android:background="@drawable/rounded"
             android:ems="10"
             android:inputType="text"
             android:text="  Điểm đến"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/editTextText"
-            android:background="@drawable/rounded"/>
+            app:layout_constraintTop_toBottomOf="@+id/beginPick" />
 
         <Button
             android:id="@+id/searchRoute"
-            android:layout_width="280dp"
+            android:layout_width="260dp"
             android:layout_height="48dp"
-            android:layout_marginStart="70dp"
+            android:layout_marginStart="80dp"
             android:layout_marginTop="8dp"
+            android:backgroundTint="@color/main_color"
             android:text="Tìm Đường"
+            android:textStyle="bold"
             android:textColor="#FFFFFF"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/editTextText2"
-            android:backgroundTint="@color/main_color"/>
+            app:layout_constraintTop_toBottomOf="@+id/endPick" />
+
+        <TextView
+            android:id="@+id/titlePick"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="122dp"
+            android:layout_marginTop="20dp"
+            android:text="Chọn tọa độ"
+            android:textColor="#FFFFFF"
+            app:layout_constraintStart_toEndOf="@+id/backButton"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:layout_editor_absoluteX="188dp"
+            tools:layout_editor_absoluteY="27dp" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

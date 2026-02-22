@@ -73,11 +73,11 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/titleLayout"
-        android:layout_width="409dp"
+        android:layout_width="411dp"
         android:layout_height="70dp"
+        android:background="#363636"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:background="#363636">
+        app:layout_constraintTop_toTopOf="parent">
 
         <TextView
             android:id="@+id/titleRoute"

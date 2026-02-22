@@ -134,7 +134,7 @@ def plan_route(
             print(f"[WARN] Không tìm được đường đi bộ từ bến xuống đến điểm đích: {stop_node_end} -> {node_end}")
 
         full_journey = reconstruct_full_journey(walk_segments, [transit_segment])
-        results.append({"legs": full_journey})
+        results.append({"journeyLegs": full_journey})
 
     return results
 

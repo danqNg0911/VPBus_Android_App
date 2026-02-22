@@ -3,10 +3,11 @@ package com.example.vpbus.model;
 import androidx.annotation.NonNull;
 import androidx.room.ColumnInfo;
 import androidx.room.Entity;
+import androidx.room.Ignore;
 import androidx.room.PrimaryKey;
 
 @Entity(tableName = "stops")
-public class BusStop {
+public class BusStop implements  Cloneable{
     @PrimaryKey
     @NonNull
     private String stop_id;
@@ -18,8 +19,9 @@ public class BusStop {
     @ColumnInfo(name = "stop_lon")
     @NonNull
     private double stop_lon;
+    @Ignore
+    public double distance;
 
-    //public BusStop() {}
 
     public BusStop(String stop_id, String stop_name, double stop_lat, double stop_lon) {
         this.stop_id = stop_id;
@@ -60,4 +62,12 @@ public class BusStop {
         this.stop_lon = stop_lon;
     }
 
+    @Override
+    public BusStop clone() {
+        try {
+            return (BusStop) super.clone();
+        } catch (CloneNotSupportedException e) {
+            return new BusStop(this.stop_id, this.stop_name, this.stop_lat, this.stop_lat);
+        }
+    }
 }

@@ -1,4 +1,4 @@
-package com.example.vpbus.ui;
+package com.example.vpbus.ui.Adapters;
 
 import android.content.Context;
 import android.graphics.Bitmap;

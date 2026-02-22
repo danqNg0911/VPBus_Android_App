@@ -66,7 +66,7 @@
 
     <ImageView
         android:id="@+id/imageView"
-        android:layout_width="410dp"
+        android:layout_width="411dp"
         android:layout_height="160dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
@@ -76,10 +76,8 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/constraintLayout2"
-        android:layout_width="409dp"
+        android:layout_width="411dp"
         android:layout_height="400dp"
-        android:layout_marginStart="1dp"
-        android:layout_marginTop="0dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageView">
 
@@ -97,11 +95,11 @@
             android:layout_height="30dp"
             android:layout_marginTop="0dp"
             android:layout_weight="1"
+            android:background="#363636"
             android:text="  Cá nhân"
-            android:textStyle="bold"
             android:textColor="#FFFFFF"
             android:textSize="17dp"
-            android:background="#363636"
+            android:textStyle="bold"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -115,16 +113,16 @@
             app:layout_constraintTop_toBottomOf="@id/textView2">
 
             <Button
-                style="@style/StopsPageButton"
                 android:id="@+id/favourite"
+                style="@style/StopsPageButton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="Địa điểm yêu thích" />
 
             <Button
-                style="@style/StopsPageButton"
                 android:id="@+id/history"
+                style="@style/StopsPageButton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -133,10 +131,8 @@
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="409dp"
+        android:layout_width="411dp"
         android:layout_height="100dp"
-        android:layout_marginStart="1dp"
-        android:layout_marginTop="1dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/constraintLayout2">
 
@@ -146,11 +142,11 @@
             android:layout_height="30dp"
             android:layout_marginStart="1dp"
             android:layout_marginTop="4dp"
+            android:background="#363636"
             android:text="   Đánh giá"
-            android:textStyle="bold"
             android:textColor="@color/white"
             android:textSize="17dp"
-            android:background="#363636"
+            android:textStyle="bold"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
     </androidx.constraintlayout.widget.ConstraintLayout>

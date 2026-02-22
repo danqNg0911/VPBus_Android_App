@@ -25,7 +25,7 @@ if __name__ == "__main__":
     print("\nCác phương án hành trình khả thi:")
     for idx, option in enumerate(journey_options, start=1):
         print(f"\nPhương án {idx}:")
-        for leg in option['legs']:
+        for leg in option['journeyLegs']:
             if leg['type'] == 'walk':
                 print(f"Đi bộ từ node {leg['from_node']} đến node {leg['to_node']} ({leg['distance']:.1f}m)")
             elif leg['type'] == 'bus':

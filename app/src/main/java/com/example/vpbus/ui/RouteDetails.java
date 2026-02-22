@@ -45,7 +45,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class RouteDetails extends AppCompatActivity {
+public class RouteDetails extends AppCompatActivity implements RouteListStopsFragment.StopSelectionCallback{
     private PopupWindow popupWindow;
     private boolean isPopupVisible = false;
     private MapView mapView;
@@ -53,6 +53,8 @@ public class RouteDetails extends AppCompatActivity {
     private boolean isReversed = false;
     private List<BusStop> currentStops = new ArrayList<>();
     private List<BusShape> currentShape = new ArrayList<>();
+    private BusStop selectedStop;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -134,7 +136,7 @@ public class RouteDetails extends AppCompatActivity {
             BusRoute route = db.busRouteDao().getRouteByShortName(routeShortName);
 
             // Xác định chuyến
-            List<String> tripIds = db.tripDao().getTripIdsByShortName(routeShortName);
+            List<String> tripIds = db.tripDao().getTripIdsByShortNameAndDirection(routeShortName,0);
             if (tripIds == null || tripIds.isEmpty()) return;
             String tripId = tripIds.get(0);
 
@@ -170,15 +172,55 @@ public class RouteDetails extends AppCompatActivity {
         changeDirectionBtn.setOnClickListener(v -> {
             isReversed = !isReversed;
 
+            selectedStop = null;
             CharSequence temp = firstDir.getText();
             firstDir.setText(secondDir.getText());
             secondDir.setText(temp);
 
-            java.util.Collections.reverse(currentStops);
-            java.util.Collections.reverse(currentShape);
-
             //Cập nhật vẽ trên map
-            mapsManager.renderRoute(mapView, currentShape, currentStops, this);
+            if(isReversed) {
+                new Thread(() -> {
+                    // Xác định chuyến
+                    List<String> tripIds = db.tripDao().getTripIdsByShortNameAndDirection(routeShortName,1);
+                    if (tripIds == null || tripIds.isEmpty()) return;
+                    String tripId = tripIds.get(0);
+
+                    // Xác định điểm dừng
+                    List<BusStop> stops = db.busStopsDao().getStopsByTrip(tripId);
+                    currentStops = stops;
+                    if (stops == null || stops.isEmpty()) return;
+
+                    // Xác định shape
+                    String shapeId = "shape_" + routeShortName + "_1";
+                    List<BusShape> shapePoints = db.busShapeDao().getShapePoints(shapeId);
+                    currentShape = shapePoints;
+
+                    runOnUiThread(() -> {
+                        mapsManager.renderRoute(mapView, shapePoints, stops, this);
+                    });
+                }).start();
+            } else {
+                new Thread(() -> {
+                    // Xác định chuyến
+                    List<String> tripIds = db.tripDao().getTripIdsByShortNameAndDirection(routeShortName,0);
+                    if (tripIds == null || tripIds.isEmpty()) return;
+                    String tripId = tripIds.get(0);
+
+                    // Xác định điểm dừng
+                    List<BusStop> stops = db.busStopsDao().getStopsByTrip(tripId);
+                    currentStops = stops;
+                    if (stops == null || stops.isEmpty()) return;
+
+                    // Xác định shape
+                    String shapeId = "shape_" + routeShortName + "_0";
+                    List<BusShape> shapePoints = db.busShapeDao().getShapePoints(shapeId);
+                    currentShape = shapePoints;
+
+                    runOnUiThread(() -> {
+                        mapsManager.renderRoute(mapView, shapePoints, stops, this);
+                    });
+                }).start();
+            }
 
             // Gửi tín hiệu cho fragment hiện tại (Trạm dừng)
             RouteListStopsFragment fragment =
@@ -231,5 +273,15 @@ public class RouteDetails extends AppCompatActivity {
         mapsManager.onDestroy(mapView);
     }
 
+    @Override
+    public void onStopSelected(BusStop stop) {
+        selectedStop = stop;
+
+        mapsManager.focusOnStop(
+                mapView,
+                stop,
+                this
+        );
+    }
 
 }
