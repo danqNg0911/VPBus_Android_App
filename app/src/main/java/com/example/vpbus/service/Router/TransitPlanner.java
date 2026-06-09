@@ -1,12 +1,22 @@
 package com.example.vpbus.service.Router;
+
 import com.example.vpbus.data.AppDatabase;
 import com.example.vpbus.model.BusStop;
 import com.example.vpbus.model.BusStopTimes;
 import com.example.vpbus.model.Edge;
 import com.example.vpbus.model.Journey;
 import com.example.vpbus.model.JourneyLeg;
+import com.example.vpbus.model.JourneySummary;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Comparator;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.LinkedHashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.Set;
 
 public class TransitPlanner {
 
@@ -18,8 +28,6 @@ public class TransitPlanner {
         this.raptorRouter = new RaptorAlg();
     }
 
-    // ------------------ Helpers: geo/time ------------------
-
     private double calculateBearing(double lat1, double lon1, double lat2, double lon2) {
         return NearestStopFinder.bearing(lat1, lon1, lat2, lon2);
     }
@@ -28,18 +36,16 @@ public class TransitPlanner {
         return NearestStopFinder.angleDifference(a, b);
     }
 
-    // ------------------ Ranking logic ------------------
-
     private List<String> rankStartStopsDirectional(
             List<BusStop> nearbyStartStops,
             Map<String, BusStop> stopsById,
-            Map<String, List<BusStopTimes>> stbt,
-            double destLat, double destLon,
+            Map<String, List<BusStopTimes>> stopTimesByTrip,
+            double destLat,
+            double destLon,
             int startSeconds
     ) {
         if (nearbyStartStops.isEmpty()) return new ArrayList<>();
 
-        // Logic "preferred_side" dựa trên ký tự đầu của stopId (giống Python)
         String preferredSide = null;
         String firstId = nearbyStartStops.get(0).getStop_id();
         if (firstId != null && !firstId.isEmpty() && Character.isDigit(firstId.charAt(0))) {
@@ -52,27 +58,23 @@ public class TransitPlanner {
             double baseDist = s.distance;
             double wantBearing = calculateBearing(s.getStop_lat(), s.getStop_lon(), destLat, destLon);
 
-            List<Double> departBearings = getDepartingBearings(sid, stbt, stopsById, startSeconds);
-
+            List<Double> departBearings = getDepartingBearings(sid, stopTimesByTrip, stopsById, startSeconds);
             if (departBearings.isEmpty()) {
                 scored.add(new ScoredStop(sid, baseDist, 600, 999.0));
                 continue;
             }
 
             double bestDiff = Double.MAX_VALUE;
-            for (double b : departBearings) {
-                bestDiff = Math.min(bestDiff, calculateAngleDiff(b, wantBearing));
+            for (double bearing : departBearings) {
+                bestDiff = Math.min(bestDiff, calculateAngleDiff(bearing, wantBearing));
             }
 
-            int penSec = 0;
-            if (bestDiff > 110.0) continue; // Hard threshold
-            else if (bestDiff > 70.0) penSec += 120; // Soft penalty
+            int penaltySec = 0;
+            if (bestDiff > 110.0) continue;
+            if (bestDiff > 70.0) penaltySec += 120;
+            if (preferredSide != null && !sid.startsWith(preferredSide)) penaltySec += 60;
 
-            if (preferredSide != null && !sid.startsWith(preferredSide)) {
-                penSec += 60; // Penalty khác lề đường
-            }
-
-            scored.add(new ScoredStop(sid, baseDist, penSec, bestDiff));
+            scored.add(new ScoredStop(sid, baseDist, penaltySec, bestDiff));
         }
 
         scored.sort(Comparator.comparingDouble(item -> item.distance + item.penaltySec * 1.4));
@@ -82,86 +84,119 @@ public class TransitPlanner {
         return result;
     }
 
-    private List<Double> getDepartingBearings(String stopId, Map<String, List<BusStopTimes>> stbt,
-                                              Map<String, BusStop> stopsById, int startSeconds) {
+    private List<Double> getDepartingBearings(
+            String stopId,
+            Map<String, List<BusStopTimes>> stopTimesByTrip,
+            Map<String, BusStop> stopsById,
+            int startSeconds
+    ) {
         List<Double> bearings = new ArrayList<>();
-        for (List<BusStopTimes> seq : stbt.values()) {
+        for (List<BusStopTimes> seq : stopTimesByTrip.values()) {
             for (int i = 0; i < seq.size() - 1; i++) {
                 BusStopTimes st = seq.get(i);
-                if (st.getStop_id().equals(stopId)) {
-                    // Chuyển arrivalTime sang giây để so sánh (giả định đã có helper parse)
-                    if (parseHms(st.getDeparture_time()) >= startSeconds) {
-                        BusStop s = stopsById.get(stopId);
-                        BusStop n = stopsById.get(seq.get(i + 1).getStop_id());
-                        if (s != null && n != null) {
-                            bearings.add(calculateBearing(s.getStop_lat(), s.getStop_lon(), n.getStop_lat(), n.getStop_lon()));
-                        }
-                    }
+                if (!st.getStop_id().equals(stopId)) continue;
+                if (parseHms(st.getDeparture_time()) < startSeconds) continue;
+
+                BusStop s = stopsById.get(stopId);
+                BusStop n = stopsById.get(seq.get(i + 1).getStop_id());
+                if (s != null && n != null) {
+                    bearings.add(calculateBearing(s.getStop_lat(), s.getStop_lon(), n.getStop_lat(), n.getStop_lon()));
                 }
             }
         }
         return bearings;
     }
 
-    // ------------------ Core: planRoute ------------------
-
     public List<Journey> planRoute(double latFrom, double lngFrom, double latTo, double lngTo, Calendar startTime) {
-        // 1. Load Data từ DAO
         TransitData data = TransitData.loadAll(db);
-        Map<String, BusStop> stopsById = new HashMap<>();
-        for (BusStop s : data.stops) stopsById.put(s.getStop_id(), s);
 
-        // Nhóm stop_times theo trip để ranking
-        Map<String, List<BusStopTimes>> stbt = new HashMap<>();
-        for (BusStopTimes st : data.stopTimes) {
-            stbt.computeIfAbsent(st.getTrip_id(), k -> new ArrayList<>()).add(st);
-        }
-
-        // 2. Tìm bến gần nhất & Ranking
         List<BusStop> nearbyStart = NearestStopFinder.findNearestStops(latFrom, lngFrom, data.stops, 300, 100, 1500);
         List<BusStop> nearbyEnd = NearestStopFinder.findNearestStops(latTo, lngTo, data.stops, 300, 100, 1500);
 
         int startSeconds = startTime.get(Calendar.HOUR_OF_DAY) * 3600 + startTime.get(Calendar.MINUTE) * 60;
+        List<String> rankedStartIds = rankStartStopsDirectional(
+                nearbyStart,
+                data.stopsById,
+                data.stopTimesByTrip,
+                latTo,
+                lngTo,
+                startSeconds
+        );
+        if (rankedStartIds.isEmpty()) {
+            for (BusStop stop : nearbyStart) {
+                rankedStartIds.add(stop.getStop_id());
+            }
+        }
 
-        List<String> rankedStartIds = rankStartStopsDirectional(nearbyStart, stopsById, stbt, latTo, lngTo, startSeconds);
         List<String> endStopIds = new ArrayList<>();
         for (BusStop s : nearbyEnd) endStopIds.add(s.getStop_id());
 
-        // 3. Chạy RAPTOR
         Map<String, List<NearestStopFinder.StopDistance>> nearbyStopMap =
                 NearestStopFinder.buildNearbyStopMap(data.stops, latFrom, lngFrom, latTo, lngTo, 300, 100, 1000);
 
         List<List<Map<String, Object>>> raptorJourneys = raptorRouter.runRaptor(
-                data.trips, data.stopTimes, rankedStartIds, endStopIds, startTime, 6, nearbyStopMap, 500.0);
+                data,
+                rankedStartIds,
+                endStopIds,
+                startTime,
+                3,
+                nearbyStopMap,
+                500.0
+        );
+        if (raptorJourneys.isEmpty()) {
+            Calendar morningFallback = (Calendar) startTime.clone();
+            morningFallback.set(Calendar.HOUR_OF_DAY, 8);
+            morningFallback.set(Calendar.MINUTE, 0);
+            morningFallback.set(Calendar.SECOND, 0);
+            morningFallback.set(Calendar.MILLISECOND, 0);
+            raptorJourneys = raptorRouter.runRaptor(
+                    data,
+                    rankedStartIds,
+                    endStopIds,
+                    morningFallback,
+                    3,
+                    nearbyStopMap,
+                    500.0
+            );
+            startSeconds = 8 * 3600;
+        }
 
-        // 4. Reconstruct với A* (Chuyển đổi các chặng RAPTOR thành Full Journey có tọa độ)
         List<Journey> finalResults = new ArrayList<>();
-        Map<Integer, List<Edge>> graph = AStarAlg.buildGraph(data.edges);
-
         for (List<Map<String, Object>> transitLegs : raptorJourneys) {
+            List<Map<String, Object>> mergedTransitLegs = mergeBusLegs(transitLegs);
+            if (!isValidTransitResult(mergedTransitLegs)) continue;
+
             Journey journey = new Journey();
-            journey.legs = reconstructFullJourney(data, graph, latFrom, lngFrom, latTo, lngTo, transitLegs);
+            journey.legs = reconstructFullJourney(data, data.graph, latFrom, lngFrom, latTo, lngTo, mergedTransitLegs);
+            if (journey.legs.isEmpty()) continue;
+
+            journey.summary = buildSummary(journey, startSeconds);
             finalResults.add(journey);
         }
 
-        return finalResults;
+        return rankAndDeduplicate(finalResults);
     }
 
-    private List<JourneyLeg> reconstructFullJourney(TransitData data, Map<Integer, List<Edge>> graph,
-                                                    double startLat, double startLon, double endLat, double endLon,
-                                                    List<Map<String, Object>> transitLegs) {
+    private List<JourneyLeg> reconstructFullJourney(
+            TransitData data,
+            Map<Integer, List<Edge>> graph,
+            double startLat,
+            double startLon,
+            double endLat,
+            double endLon,
+            List<Map<String, Object>> transitLegs
+    ) {
         List<JourneyLeg> legs = new ArrayList<>();
         if (transitLegs.isEmpty()) return legs;
 
-        // Đi bộ từ vị trí người dùng -> Bến đầu tiên
         String firstStopId = (String) transitLegs.get(0).get("from_stop");
         int startNode = findNearestNode(data.nodes, startLat, startLon);
-        int firstBoardNode = data.stopNodeMap.get(firstStopId);
+        Integer firstBoardNode = data.stopNodeMap.get(firstStopId);
+        if (startNode < 0 || firstBoardNode == null) return legs;
 
-        AStarAlg.AStarResult w1 = AStarAlg.aStarSearch(graph, data.nodes, startNode, firstBoardNode);
-        legs.add(new JourneyLeg("walk", w1.path, w1.distance));
+        AStarAlg.AStarResult firstWalk = findWalkPath(graph, data.nodes, startNode, firstBoardNode);
+        legs.add(new JourneyLeg("walk", firstWalk.path, firstWalk.distance));
 
-        // Các chặng bus và đi bộ chuyển tuyến
         for (int i = 0; i < transitLegs.size(); i++) {
             Map<String, Object> busLegMap = transitLegs.get(i);
             legs.add(new JourneyLeg("bus", busLegMap));
@@ -170,22 +205,147 @@ public class TransitPlanner {
                 String prevAlight = (String) busLegMap.get("to_stop");
                 String nextBoard = (String) transitLegs.get(i + 1).get("from_stop");
                 if (!prevAlight.equals(nextBoard)) {
-                    int n1 = data.stopNodeMap.get(prevAlight);
-                    int n2 = data.stopNodeMap.get(nextBoard);
-                    AStarAlg.AStarResult walkInter = AStarAlg.aStarSearch(graph, data.nodes, n1, n2);
+                    Integer n1 = data.stopNodeMap.get(prevAlight);
+                    Integer n2 = data.stopNodeMap.get(nextBoard);
+                    if (n1 == null || n2 == null) return new ArrayList<>();
+                    AStarAlg.AStarResult walkInter = findWalkPath(graph, data.nodes, n1, n2);
+                    if (walkInter.distance > 500.0) return new ArrayList<>();
                     legs.add(new JourneyLeg("walk", walkInter.path, walkInter.distance));
                 }
             }
         }
 
-        // Chặng đi bộ cuối cùng: Bến cuối -> Đích
         String lastStopId = (String) transitLegs.get(transitLegs.size() - 1).get("to_stop");
-        int lastNode = data.stopNodeMap.get(lastStopId);
+        Integer lastNode = data.stopNodeMap.get(lastStopId);
         int endNode = findNearestNode(data.nodes, endLat, endLon);
-        AStarAlg.AStarResult w2 = AStarAlg.aStarSearch(graph, data.nodes, lastNode, endNode);
-        legs.add(new JourneyLeg("walk", w2.path, w2.distance));
+        if (lastNode == null || endNode < 0) return new ArrayList<>();
+
+        AStarAlg.AStarResult lastWalk = findWalkPath(graph, data.nodes, lastNode, endNode);
+        legs.add(new JourneyLeg("walk", lastWalk.path, lastWalk.distance));
 
         return legs;
+    }
+
+    private AStarAlg.AStarResult findWalkPath(Map<Integer, List<Edge>> graph, Map<Integer, double[]> nodes, int start, int goal) {
+        AStarAlg.AStarResult result = AStarAlg.aStarSearch(graph, nodes, start, goal);
+        if (!Double.isFinite(result.distance)) {
+            result = AStarAlg.fallbackWalkLink(graph, nodes, start, goal);
+        }
+        return result;
+    }
+
+    private List<Map<String, Object>> mergeBusLegs(List<Map<String, Object>> transitLegs) {
+        List<Map<String, Object>> merged = new ArrayList<>();
+        for (Map<String, Object> leg : transitLegs) {
+            if (merged.isEmpty()) {
+                merged.add(new HashMap<>(leg));
+                continue;
+            }
+
+            Map<String, Object> previous = merged.get(merged.size() - 1);
+            String prevTrip = (String) previous.get("trip_id");
+            String currTrip = (String) leg.get("trip_id");
+            String prevRoute = (String) previous.get("route_id");
+            String currRoute = (String) leg.get("route_id");
+            String prevTo = (String) previous.get("to_stop");
+            String currFrom = (String) leg.get("from_stop");
+
+            boolean sameVehicle = prevTrip != null && prevTrip.equals(currTrip);
+            boolean sameRouteContinuation = prevRoute != null && prevRoute.equals(currRoute)
+                    && prevTo != null && prevTo.equals(currFrom);
+
+            if (sameVehicle || sameRouteContinuation) {
+                previous.put("to_stop", leg.get("to_stop"));
+                previous.put("arrive_time", leg.get("arrive_time"));
+            } else {
+                merged.add(new HashMap<>(leg));
+            }
+        }
+        return merged;
+    }
+
+    private boolean isValidTransitResult(List<Map<String, Object>> transitLegs) {
+        if (transitLegs.isEmpty() || transitLegs.size() > 3) return false;
+
+        Set<String> seenTransitions = new HashSet<>();
+        Set<String> seenRoutes = new HashSet<>();
+        String previousRoute = null;
+
+        for (Map<String, Object> leg : transitLegs) {
+            String routeId = (String) leg.get("route_id");
+            String fromStop = (String) leg.get("from_stop");
+            String toStop = (String) leg.get("to_stop");
+
+            if (routeId == null || fromStop == null || toStop == null || fromStop.equals(toStop)) return false;
+            if (!seenTransitions.add(fromStop + ">" + toStop)) return false;
+            if (!routeId.equals(previousRoute) && seenRoutes.contains(routeId)) return false;
+
+            seenRoutes.add(routeId);
+            previousRoute = routeId;
+        }
+        return true;
+    }
+
+    private JourneySummary buildSummary(Journey journey, int requestedStartSec) {
+        int firstDepart = Integer.MAX_VALUE;
+        int lastArrive = requestedStartSec;
+        int busLegCount = 0;
+        double walkingDistance = 0.0;
+
+        for (JourneyLeg leg : journey.legs) {
+            if ("walk".equals(leg.getType())) {
+                walkingDistance += leg.getDistance();
+            } else if ("bus".equals(leg.getType())) {
+                busLegCount++;
+                firstDepart = Math.min(firstDepart, parseHms((String) leg.getBusInfo().get("depart_time")));
+                lastArrive = Math.max(lastArrive, parseHms((String) leg.getBusInfo().get("arrive_time")));
+            }
+        }
+
+        int departSec = firstDepart == Integer.MAX_VALUE ? requestedStartSec : firstDepart;
+        int finalWalkSec = (int) Math.round((walkingDistance / 80.0) * 60.0);
+        int arriveSec = lastArrive + finalWalkSec;
+
+        return new JourneySummary(
+                departSec,
+                arriveSec,
+                Math.max(0, arriveSec - requestedStartSec),
+                Math.max(0, busLegCount - 1),
+                busLegCount,
+                walkingDistance,
+                busLegCount * 10000
+        );
+    }
+
+    private List<Journey> rankAndDeduplicate(List<Journey> journeys) {
+        journeys.sort(Comparator
+                .comparingInt((Journey j) -> j.summary.arriveSec)
+                .thenComparingInt(j -> j.summary.transferCount)
+                .thenComparingDouble(j -> j.summary.walkingDistanceMeters));
+
+        Map<String, Journey> unique = new LinkedHashMap<>();
+        for (Journey journey : journeys) {
+            String signature = buildSignature(journey);
+            Journey existing = unique.get(signature);
+            if (existing == null || journey.summary.arriveSec < existing.summary.arriveSec) {
+                unique.put(signature, journey);
+            }
+        }
+        return new ArrayList<>(unique.values());
+    }
+
+    private String buildSignature(Journey journey) {
+        StringBuilder builder = new StringBuilder();
+        for (JourneyLeg leg : journey.legs) {
+            if (!"bus".equals(leg.getType())) continue;
+            builder.append(leg.getBusInfo().get("route_id"))
+                    .append(':')
+                    .append(leg.getBusInfo().get("from_stop"))
+                    .append('>')
+                    .append(leg.getBusInfo().get("to_stop"))
+                    .append('|');
+        }
+        return builder.toString();
     }
 
     private int findNearestNode(Map<Integer, double[]> nodes, double lat, double lon) {
@@ -206,11 +366,17 @@ public class TransitPlanner {
         return Integer.parseInt(p[0]) * 3600 + Integer.parseInt(p[1]) * 60 + Integer.parseInt(p[2]);
     }
 
-    // Helper classes cho kết quả
     private static class ScoredStop {
-        String stopId; double distance; int penaltySec; double angleDiff;
+        String stopId;
+        double distance;
+        int penaltySec;
+        double angleDiff;
+
         ScoredStop(String id, double d, int p, double a) {
-            this.stopId = id; this.distance = d; this.penaltySec = p; this.angleDiff = a;
+            this.stopId = id;
+            this.distance = d;
+            this.penaltySec = p;
+            this.angleDiff = a;
         }
     }
 }

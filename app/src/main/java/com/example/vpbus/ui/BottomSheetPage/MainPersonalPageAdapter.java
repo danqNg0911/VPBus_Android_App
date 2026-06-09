@@ -5,13 +5,13 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentActivity;
 import androidx.viewpager2.adapter.FragmentStateAdapter;
 
-import com.example.vpbus.ui.fragments.StopsFavouriteFragment;
-import com.example.vpbus.ui.fragments.StopsNearbyFragment;
+import com.example.vpbus.ui.fragments.FavoritePlacesFragment;
+import com.example.vpbus.ui.fragments.RecentTripsFragment;
 
-public class SPBottomSheetPageAdapter extends FragmentStateAdapter {
+public class MainPersonalPageAdapter extends FragmentStateAdapter {
 
-    public SPBottomSheetPageAdapter(@NonNull FragmentActivity fa) {
-        super(fa);
+    public MainPersonalPageAdapter(@NonNull FragmentActivity fragmentActivity) {
+        super(fragmentActivity);
     }
 
     @NonNull
@@ -19,9 +19,9 @@ public class SPBottomSheetPageAdapter extends FragmentStateAdapter {
     public Fragment createFragment(int position) {
         switch (position) {
             case 0:
-                return new StopsNearbyFragment();
+                return new FavoritePlacesFragment();
             case 1:
-                return new StopsFavouriteFragment();
+                return new RecentTripsFragment();
             default:
                 return new Fragment();
         }

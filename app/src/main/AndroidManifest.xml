@@ -39,5 +39,7 @@
         <activity android:name=".ui.RouteDetails" />
         <activity android:name=".ui.CheckSearch" />
         <activity android:name=".ui.SuggestRoute" />
+        <activity android:name=".ui.JourneyMapActivity" />
+        <activity android:name=".ui.BusStopDetailActivity" />
     </application>
 </manifest>

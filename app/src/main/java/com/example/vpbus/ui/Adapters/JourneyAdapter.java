@@ -14,16 +14,23 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.vpbus.R;
 import com.example.vpbus.model.Journey;
 import com.example.vpbus.model.JourneyLeg;
+import com.example.vpbus.model.JourneySummary;
 
 import java.util.List;
+import java.util.Locale;
 
 public class JourneyAdapter extends RecyclerView.Adapter<JourneyAdapter.ViewHolder> {
-    private Context context;
-    private List<Journey> journeys;
+    private final Context context;
+    private final List<Journey> journeys;
+    private OnJourneyClickListener listener;
 
     public JourneyAdapter(Context context, List<Journey> journeys) {
         this.context = context;
         this.journeys = journeys;
+    }
+
+    public void setOnJourneyClickListener(OnJourneyClickListener listener) {
+        this.listener = listener;
     }
 
     @NonNull
@@ -35,52 +42,43 @@ public class JourneyAdapter extends RecyclerView.Adapter<JourneyAdapter.ViewHold
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-
         Journey journey = journeys.get(position);
         List<JourneyLeg> legs = journey.legs;
+        JourneySummary summary = journey.summary;
 
-        // 1. Xử lý nạp các Icon Legs động (Line 1 bên trái)
         setupLegsIcons(holder.legsIconContainer, legs);
 
-        // 2. Xử lý Thời gian (Line 2 bên trái)
-        String startTime = "00:00";
-        String endTime = "00:00";
-        String firstStop = "";
+        String depart = summary != null ? formatTime(summary.departSec) : firstBusTime(legs, "depart_time");
+        String arrive = summary != null ? formatTime(summary.arriveSec) : firstBusTime(legs, "arrive_time");
+        holder.tvTimeRange.setText(depart + " - " + arrive);
 
-        // Tìm chặng bus đầu và cuối để lấy thời gian
-        for (JourneyLeg leg : legs) {
-            if (leg.getType().equals("bus")) {
-                if (firstStop.isEmpty()) {
-                    startTime = (String) leg.getBusInfo().get("depart_time");
-                    firstStop = (String) leg.getBusInfo().get("from_stop");
-                }
-                endTime = (String) leg.getBusInfo().get("arrive_time");
+        String firstStop = firstBusStop(legs);
+        holder.tvFirstInfo.setText("Khoi hanh luc " + depart + " tai ben " + firstStop);
+
+        int durationMin = summary != null ? Math.max(1, summary.durationSec / 60) : 0;
+        int price = summary != null ? summary.price : calculateBusLegCount(legs) * 10000;
+        holder.tvTotalDuration.setText(durationMin + " phut");
+        holder.tvTotalPrice.setText(String.format(Locale.US, "%,d d", price));
+
+        holder.itemView.setOnClickListener(v -> {
+            int pos = holder.getAdapterPosition();
+            if (pos != RecyclerView.NO_POSITION && listener != null) {
+                listener.onJourneyClick(journeys.get(pos), pos);
             }
-        }
-        holder.tvTimeRange.setText(startTime + " - " + endTime);
-
-        // 3. Xử lý Thông tin bến (Line 3 bên trái)
-        holder.tvFirstInfo.setText("Khởi hành lúc " + startTime + " tại bến " + firstStop);
-
-        // 4. Xử lý Tổng thời gian & Giá tiền (Bên phải)
-        holder.tvTotalDuration.setText(calculateDuration(startTime, endTime) + " phút");
-        holder.tvTotalPrice.setText(calculatePrice(legs) + " đ");
+        });
     }
 
     private void setupLegsIcons(LinearLayout container, List<JourneyLeg> legs) {
-        container.removeAllViews(); // Xóa view cũ khi recycle
-
+        container.removeAllViews();
         for (int i = 0; i < legs.size(); i++) {
             JourneyLeg leg = legs.get(i);
-
-            if (leg.getType().equals("walk")) {
-                addIconView(container, R.drawable.ic_walk); // Icon người đi bộ
-            } else if (leg.getType().equals("bus")) {
+            if ("walk".equals(leg.getType())) {
+                addIconView(container, R.drawable.ic_walk);
+            } else if ("bus".equals(leg.getType())) {
                 String routeId = (String) leg.getBusInfo().get("route_id");
-                addBusBadge(container, routeId); // Icon bus + Số hiệu tuyến
+                addBusBadge(container, routeId);
             }
 
-            // Thêm dấu mũi tên ">" giữa các chặng, trừ chặng cuối
             if (i < legs.size() - 1) {
                 addIconView(container, R.drawable.ic_chevron_right);
             }
@@ -90,7 +88,6 @@ public class JourneyAdapter extends RecyclerView.Adapter<JourneyAdapter.ViewHold
     private void addIconView(LinearLayout container, int resId) {
         ImageView imageView = new ImageView(context);
         imageView.setImageResource(resId);
-        // Thiết lập kích thước icon nhỏ gọn
         LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(50, 50);
         params.setMargins(4, 0, 4, 0);
         imageView.setLayoutParams(params);
@@ -98,29 +95,53 @@ public class JourneyAdapter extends RecyclerView.Adapter<JourneyAdapter.ViewHold
     }
 
     private void addBusBadge(LinearLayout container, String routeId) {
-        // Inflate một layout nhỏ cho bus badge (gồm icon bus + text số hiệu)
         View busBadge = LayoutInflater.from(context).inflate(R.layout.layout_bus_badge, container, false);
         TextView tvRoute = busBadge.findViewById(R.id.tvRouteId);
         tvRoute.setText(routeId);
         container.addView(busBadge);
     }
 
-    private int calculateDuration(String start, String end) {
-        String[] s = start.split(":");
-        int startSec = Integer.parseInt(s[0]) * 3600 + Integer.parseInt(s[1]) * 60 + Integer.parseInt(s[2]);;
-        String[] e = end.split(":");
-        int endSec = Integer.parseInt(e[0]) * 3600 + Integer.parseInt(e[1]) * 60 + Integer.parseInt(e[2]);;
-        return (endSec - startSec) / 60;
+    private String firstBusTime(List<JourneyLeg> legs, String key) {
+        for (JourneyLeg leg : legs) {
+            if ("bus".equals(leg.getType())) {
+                return String.valueOf(leg.getBusInfo().get(key));
+            }
+        }
+        return "00:00";
     }
 
-    private String calculatePrice(List<JourneyLeg> legs) {
+    private String firstBusStop(List<JourneyLeg> legs) {
+        for (JourneyLeg leg : legs) {
+            if ("bus".equals(leg.getType())) {
+                return String.valueOf(leg.getBusInfo().get("from_stop"));
+            }
+        }
+        return "";
+    }
+
+    private int calculateBusLegCount(List<JourneyLeg> legs) {
         int count = 0;
-        for (JourneyLeg l : legs) if (l.getType().equals("bus")) count++;
-        return String.format("%,d", count * 10000);
+        for (JourneyLeg leg : legs) {
+            if ("bus".equals(leg.getType())) count++;
+        }
+        return count;
+    }
+
+    private String formatTime(int seconds) {
+        int normalized = ((seconds % 86400) + 86400) % 86400;
+        int h = normalized / 3600;
+        int m = (normalized % 3600) / 60;
+        return String.format(Locale.US, "%02d:%02d", h, m);
     }
 
     @Override
-    public int getItemCount() { return journeys.size(); }
+    public int getItemCount() {
+        return journeys.size();
+    }
+
+    public interface OnJourneyClickListener {
+        void onJourneyClick(Journey journey, int position);
+    }
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
         LinearLayout legsIconContainer;

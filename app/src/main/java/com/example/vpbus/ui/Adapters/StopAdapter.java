@@ -12,6 +12,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.vpbus.R;
 import com.example.vpbus.model.BusStop;
 
+import java.util.Locale;
 import java.util.List;
 
 public class StopAdapter extends RecyclerView.Adapter<StopAdapter.ViewHolder> {
@@ -44,7 +45,11 @@ public class StopAdapter extends RecyclerView.Adapter<StopAdapter.ViewHolder> {
         double lat = (stop.getStop_lat());
         double lon = (stop.getStop_lon());
         holder.tvLat.setText("Lat: " + lat);
-        holder.tvLon.setText("Lon: " + lon);
+        if (stop.distance > 0) {
+            holder.tvLon.setText(String.format(Locale.US, "Lon: %.6f - %.1f km", lon, stop.distance / 1000.0));
+        } else {
+            holder.tvLon.setText("Lon: " + lon);
+        }
 
         holder.itemView.setOnClickListener(v -> {
             int pos = holder.getAdapterPosition();

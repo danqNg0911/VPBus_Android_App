@@ -11,10 +11,12 @@
         android:layout_height="match_parent"
         android:contentDescription="map_route" />
 
+
     <!-- Overlay UI: top bar + bottom sheet -->
     <androidx.coordinatorlayout.widget.CoordinatorLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
+
 
         <!-- Top Bar -->
         <androidx.constraintlayout.widget.ConstraintLayout
@@ -55,6 +57,7 @@
                 android:textSize="15sp"
                 app:layout_constraintStart_toEndOf="@id/busIcon"
                 app:layout_constraintTop_toTopOf="parent" />
+
         </androidx.constraintlayout.widget.ConstraintLayout>
 
         <!-- Bottom Sheet -->
@@ -160,7 +163,10 @@
                     android:clipToPadding="false"
                     android:nestedScrollingEnabled="true"/>
             </LinearLayout>
+
         </LinearLayout>
+
+
 
     </androidx.coordinatorlayout.widget.CoordinatorLayout>
 </FrameLayout>

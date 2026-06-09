@@ -1,11 +1,111 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layout_weight="1"
     android:fitsSystemWindows="true">
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="0dp"
+        android:layout_height="160dp"
+        android:scaleType="centerCrop"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/vp_main_pic" />
+
+    <Button
+        android:id="@+id/searchButton"
+        style="@style/NavigationButton"
+        android:layout_width="0dp"
+        android:layout_height="57dp"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="90dp"
+        android:layout_marginEnd="30dp"
+        android:background="@drawable/rounded_button"
+        android:drawableLeft="@drawable/outline_search_24"
+        android:text="B&#7841;n mu&#7889;n &#273;i &#273;&#226;u?"
+        android:textAlignment="textStart"
+        android:textColor="#B4B4B4"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <LinearLayout
+        android:id="@+id/personalSection"
+        android:layout_width="0dp"
+        android:layout_height="400dp"
+        android:orientation="vertical"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/imageView">
+
+        <TextView
+            android:id="@+id/textPersonalTitle"
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:background="#363636"
+            android:gravity="center_vertical"
+            android:paddingStart="12dp"
+            android:paddingEnd="12dp"
+            android:text="C&#225; nh&#226;n"
+            android:textColor="#FFFFFF"
+            android:textSize="17sp"
+            android:textStyle="bold" />
+
+        <com.google.android.material.tabs.TabLayout
+            android:id="@+id/personalTabLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:tabBackground="@color/white"
+            app:tabGravity="fill"
+            app:tabIndicatorColor="@color/main_color"
+            app:tabMode="fixed"
+            app:tabSelectedTextColor="@color/main_color"
+            app:tabTextColor="#363636" />
+
+        <androidx.viewpager2.widget.ViewPager2
+            android:id="@+id/personalViewPager"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/reviewSection"
+        android:layout_width="0dp"
+        android:layout_height="100dp"
+        android:orientation="vertical"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/linearLayout">
+
+        <TextView
+            android:id="@+id/textReviewTitle"
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:background="#363636"
+            android:gravity="center_vertical"
+            android:paddingStart="12dp"
+            android:paddingEnd="12dp"
+            android:text="&#272;&#225;nh gi&#225;"
+            android:textColor="@color/white"
+            android:textSize="17sp"
+            android:textStyle="bold" />
+
+        <Button
+            android:id="@+id/reviewButton"
+            style="@style/StopsPageButton"
+            android:layout_width="match_parent"
+            android:layout_height="56dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="16dp"
+            android:drawableLeft="@drawable/ic_star"
+            android:text="G&#7917;i &#273;&#225;nh gi&#225;" />
+    </LinearLayout>
 
     <LinearLayout
         android:id="@+id/linearLayout"
@@ -14,10 +114,7 @@
         android:orientation="horizontal"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="1.0">
+        app:layout_constraintStart_toStartOf="parent">
 
         <Button
             android:id="@+id/suggestButton"
@@ -47,109 +144,4 @@
             android:drawableTop="@drawable/outline_arrow_split"
             android:text="@string/v_word_3" />
     </LinearLayout>
-
-    <Button
-        android:id="@+id/searchButton"
-        style="@style/NavigationButton"
-        android:layout_width="350dp"
-        android:layout_height="57dp"
-        android:layout_marginStart="30dp"
-        android:layout_marginTop="90dp"
-        android:drawableLeft="@drawable/outline_search_24"
-        android:text="Bạn muốn đi đâu?"
-        android:textSize="16dp"
-        android:textAlignment="textStart"
-        android:textColor="#B4B4B4"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:background="@drawable/rounded_button"/>
-
-    <ImageView
-        android:id="@+id/imageView"
-        android:layout_width="411dp"
-        android:layout_height="160dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/vp_main_pic" />
-
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/constraintLayout2"
-        android:layout_width="411dp"
-        android:layout_height="400dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView">
-
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/personalLayout">
-
-        </androidx.constraintlayout.widget.ConstraintLayout>
-
-        <TextView
-            android:id="@+id/textView2"
-            android:layout_width="match_parent"
-            android:layout_height="30dp"
-            android:layout_marginTop="0dp"
-            android:layout_weight="1"
-            android:background="#363636"
-            android:text="  Cá nhân"
-            android:textColor="#FFFFFF"
-            android:textSize="17dp"
-            android:textStyle="bold"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <LinearLayout
-            android:id="@+id/personalLayout"
-            android:layout_width="407dp"
-            android:layout_height="50dp"
-            android:layout_marginTop="1dp"
-            android:orientation="horizontal"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/textView2">
-
-            <Button
-                android:id="@+id/favourite"
-                style="@style/StopsPageButton"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="Địa điểm yêu thích" />
-
-            <Button
-                android:id="@+id/history"
-                style="@style/StopsPageButton"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="Các chuyến đi gần đây" />
-        </LinearLayout>
-    </androidx.constraintlayout.widget.ConstraintLayout>
-
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="411dp"
-        android:layout_height="100dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/constraintLayout2">
-
-        <TextView
-            android:id="@+id/textView4"
-            android:layout_width="match_parent"
-            android:layout_height="30dp"
-            android:layout_marginStart="1dp"
-            android:layout_marginTop="4dp"
-            android:background="#363636"
-            android:text="   Đánh giá"
-            android:textColor="@color/white"
-            android:textSize="17dp"
-            android:textStyle="bold"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-    </androidx.constraintlayout.widget.ConstraintLayout>
-
-
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -6,6 +6,6 @@
     <solid android:color="#FFFFFF"/>
 
     <!-- Bo tròn góc -->
-    <corners android:radius="16dp"/>
+    <corners android:radius="36dp"/>
 
 </shape>

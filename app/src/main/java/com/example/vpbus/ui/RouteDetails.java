@@ -3,6 +3,7 @@ package com.example.vpbus.ui;
 import android.graphics.Bitmap;
 import android.graphics.Color;
 import android.graphics.Paint;
+import android.location.Location;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Gravity;
@@ -14,9 +15,12 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.PopupWindow;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.viewpager2.widget.ViewPager2;
 
@@ -25,8 +29,11 @@ import com.example.vpbus.data.AppDatabase;
 import com.example.vpbus.model.BusRoute;
 import com.example.vpbus.model.BusShape;
 import com.example.vpbus.model.BusStop;
+import com.example.vpbus.service.LocationService;
+import com.example.vpbus.service.MapService;
 import com.example.vpbus.ui.BottomSheetPage.RDBottomSheetPageAdapter;
 import com.example.vpbus.ui.fragments.RouteListStopsFragment;
+import com.example.vpbus.ui.fragments.RouteTimeChartFragment;
 import com.example.vpbus.util.DrawUtil;
 import com.example.vpbus.util.MapMode;
 import com.example.vpbus.util.NavigationUtil;
@@ -54,6 +61,9 @@ public class RouteDetails extends AppCompatActivity implements RouteListStopsFra
     private List<BusStop> currentStops = new ArrayList<>();
     private List<BusShape> currentShape = new ArrayList<>();
     private BusStop selectedStop;
+    private Location lastKnownLocation;
+    private LocationService locationService;
+    private MapService mapService = new MapService();
 
 
     @Override
@@ -122,12 +132,24 @@ public class RouteDetails extends AppCompatActivity implements RouteListStopsFra
         //set map
         mapView = findViewById(R.id.mapView);
 
+        // khởi tạo location
+        locationService = new LocationService(this);
+
         try {
             mapsManager.initMap(this, mapView, "vinhphuc_v5.map", "Elevate2.xml");
-            mapsManager.setInitialPosition(mapView, 21.0278, 105.8342, (byte)12);
+            //mapsManager.setSafeUserLocation(mapView, 21.0278, 105.8342, (byte)12);
         } catch (IOException e) {
             e.printStackTrace();
         }
+
+        locationService.requestLocationUpdates(location -> {
+            lastKnownLocation = location;
+            mapService.showCurrentLocation(location, mapView, RouteDetails.this);
+
+            if (lastKnownLocation != null) {
+                mapService.centerMapOnce(lastKnownLocation, mapView, (byte) 14);
+            }
+        });
 
         // Lấy thông tin tuyến
         AppDatabase db = AppDatabase.getInstance(this);
@@ -222,12 +244,16 @@ public class RouteDetails extends AppCompatActivity implements RouteListStopsFra
                 }).start();
             }
 
-            // Gửi tín hiệu cho fragment hiện tại (Trạm dừng)
-            RouteListStopsFragment fragment =
-                    (RouteListStopsFragment) getSupportFragmentManager()
-                            .findFragmentByTag("f1"); // tab thứ 1 trong ViewPager2
-            if (fragment != null) {
-                fragment.reverseStops();
+            Fragment fragment = getSupportFragmentManager().findFragmentByTag("f0");
+            if (fragment instanceof RouteTimeChartFragment) {
+                ((RouteTimeChartFragment) fragment).updateDirection(isReversed);
+            }
+
+            // Gửi tín hiệu cho Fragment Trạm dừng (tab 1)
+            RouteListStopsFragment stopsFragment = (RouteListStopsFragment) getSupportFragmentManager()
+                    .findFragmentByTag("f1");
+            if (stopsFragment != null) {
+                stopsFragment.reverseStops();
             }
         });
 
@@ -280,7 +306,32 @@ public class RouteDetails extends AppCompatActivity implements RouteListStopsFra
         mapsManager.focusOnStop(
                 mapView,
                 stop,
-                this
+                this,
+                Math.round(160 * getResources().getDisplayMetrics().density)
+        );
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+
+        locationService.handlePermissionResult(
+                requestCode,
+                grantResults,
+                () -> {
+                    // granted
+                    locationService.requestLocationUpdates(location -> {
+                        lastKnownLocation = location;
+                        mapService.showCurrentLocation(location, mapView, this);
+                        mapService.centerMapOnce(location, mapView, (byte) 14);
+                    });
+                    locationService.getLastKnownLocation(location -> {
+                        lastKnownLocation = location;
+                        mapService.showCurrentLocation(location, mapView, this);
+                        mapService.centerMapOnce(location, mapView, (byte) 14);
+                    });
+                },
+                () -> Toast.makeText(this, "Ứng dụng cần quyền GPS để hiển thị vị trí", Toast.LENGTH_SHORT).show()
         );
     }
 

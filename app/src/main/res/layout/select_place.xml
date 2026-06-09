@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
@@ -12,16 +11,27 @@
         android:contentDescription="map_route"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/searchLayout"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintTop_toBottomOf="@id/searchLayout" />
+
+    <ImageButton
+        android:id="@+id/buttonRecenter"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:background="@drawable/rounded_button"
+        android:contentDescription="recenter"
+        android:src="@drawable/ic_recenter"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/searchLayout" />
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/searchLayout"
-        android:layout_width="411dp"
-        android:layout_height="230dp"
+        android:layout_width="0dp"
+        android:layout_height="270dp"
         android:background="#363636"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
@@ -32,65 +42,93 @@
             android:layout_marginStart="4dp"
             android:layout_marginTop="10dp"
             android:backgroundTint="#363636"
-            android:contentDescription="Button"
+            android:contentDescription="Back"
             android:drawableTop="@drawable/arrow_back"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
-
-        <Button
-            android:id="@+id/beginPick"
-            android:layout_width="300dp"
-            android:layout_height="48dp"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="56dp"
-            android:layout_marginEnd="8dp"
-            android:background="@drawable/rounded"
-            android:ems="10"
-            android:inputType="text"
-            android:text="  Điểm đi"
-            app:layout_constraintStart_toEndOf="@+id/backButton"
-            app:layout_constraintTop_toTopOf="parent" />
-
-
-        <Button
-            android:id="@+id/endPick"
-            android:layout_width="300dp"
-            android:layout_height="48dp"
-            android:layout_marginStart="60dp"
-            android:layout_marginTop="12dp"
-            android:background="@drawable/rounded"
-            android:ems="10"
-            android:inputType="text"
-            android:text="  Điểm đến"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/beginPick" />
-
-        <Button
-            android:id="@+id/searchRoute"
-            android:layout_width="260dp"
-            android:layout_height="48dp"
-            android:layout_marginStart="80dp"
-            android:layout_marginTop="8dp"
-            android:backgroundTint="@color/main_color"
-            android:text="Tìm Đường"
-            android:textStyle="bold"
-            android:textColor="#FFFFFF"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/endPick" />
 
         <TextView
             android:id="@+id/titlePick"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="122dp"
-            android:layout_marginTop="20dp"
-            android:text="Chọn tọa độ"
+            android:layout_marginTop="24dp"
+            android:text="Ch&#7885;n t&#7885;a &#273;&#7897;"
             android:textColor="#FFFFFF"
-            app:layout_constraintStart_toEndOf="@+id/backButton"
-            app:layout_constraintTop_toTopOf="parent"
-            tools:layout_editor_absoluteX="188dp"
-            tools:layout_editor_absoluteY="27dp" />
+            android:textSize="16sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
+        <Button
+            android:id="@+id/beginPick"
+            android:layout_width="0dp"
+            android:layout_height="48dp"
+            android:layout_marginStart="60dp"
+            android:layout_marginTop="56dp"
+            android:layout_marginEnd="52dp"
+            android:background="@drawable/rounded"
+            android:text="  &#272;i&#7875;m &#273;i"
+            android:textAlignment="textStart"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <Button
+            android:id="@+id/endPick"
+            android:layout_width="0dp"
+            android:layout_height="48dp"
+            android:layout_marginStart="60dp"
+            android:layout_marginTop="12dp"
+            android:layout_marginEnd="52dp"
+            android:background="@drawable/rounded"
+            android:text="  &#272;i&#7875;m &#273;&#7871;n"
+            android:textAlignment="textStart"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/beginPick" />
+
+        <Button
+            android:id="@+id/searchRoute"
+            android:layout_width="0dp"
+            android:layout_height="48dp"
+            android:layout_marginStart="60dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+            android:backgroundTint="@color/main_color"
+            android:text="T&#236;m &#273;&#432;&#7901;ng"
+            android:textColor="#FFFFFF"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toStartOf="@id/clearSelectionButton"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/endPick" />
+
+        <Button
+            android:id="@+id/clearSelectionButton"
+            android:layout_width="92dp"
+            android:layout_height="48dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="52dp"
+            android:backgroundTint="@color/white"
+            android:text="X&#243;a"
+            android:textColor="@color/main_color"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/endPick" />
+
+        <TextView
+            android:id="@+id/pickInstruction"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="16dp"
+            android:gravity="center"
+            android:text="Ch&#7841;m map &#273;&#7875; ch&#7885;n &#273;i&#7875;m &#273;i"
+            android:textColor="#FFFFFF"
+            android:textSize="14sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/searchRoute" />
     </androidx.constraintlayout.widget.ConstraintLayout>
-
 </androidx.constraintlayout.widget.ConstraintLayout>

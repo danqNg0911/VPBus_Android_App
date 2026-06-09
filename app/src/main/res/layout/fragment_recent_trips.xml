@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/textEmptyRecentTrips"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:padding="24dp"
+        android:text="C&#225;c chuy&#7871;n &#273;i g&#7847;n &#273;&#226;y s&#7869; &#273;&#432;&#7907;c th&#7921;c hi&#7879;n sau"
+        android:textColor="#666666"
+        android:textSize="15sp" />
+</FrameLayout>

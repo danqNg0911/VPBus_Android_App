@@ -7,7 +7,7 @@
     android:padding="8dp">
 
     <FrameLayout
-        android:layout_width="24dp"
+        android:layout_width="8dp"
         android:layout_height="match_parent"
         android:layout_marginEnd="8dp">
 
@@ -16,17 +16,16 @@
             android:id="@+id/line"
             android:layout_width="2dp"
             android:layout_height="match_parent"
-            android:layout_gravity="center_horizontal"
+            android:layout_gravity="left"
             android:background="@color/main_color" />
 
-        <!-- Circle -->
         <View
-            android:id="@+id/circle"
-            android:layout_width="12dp"
-            android:layout_height="12dp"
-            android:layout_gravity="center_horizontal"
-            android:layout_marginTop="20dp"
-            android:background="@drawable/group_1"/>
+            android:id="@+id/linep"
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:layout_gravity="center_vertical"
+            android:background="@color/main_color" />
+
     </FrameLayout>
 
     <!-- Thông tin bến -->
@@ -37,30 +36,13 @@
         android:orientation="vertical">
 
         <TextView
-            android:id="@+id/tvStopName"
+            android:id="@+id/tvDepartureTime"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Tên bến"
+            android:text="08:00"
             android:textStyle="bold"
             android:textSize="16sp"
             android:textColor="#222222"/>
 
-        <TextView
-            android:id="@+id/tvLat"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Latitude"
-            android:textSize="13sp"
-            android:textColor="#666666"
-            android:layout_marginTop="2dp"/>
-
-        <TextView
-            android:id="@+id/tvLon"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Longitude"
-            android:textSize="13sp"
-            android:textColor="#666666"
-            android:layout_marginTop="2dp"/>
     </LinearLayout>
 </LinearLayout>

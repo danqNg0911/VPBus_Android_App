@@ -7,6 +7,7 @@ import androidx.viewpager2.adapter.FragmentStateAdapter;
 
 import com.example.vpbus.ui.fragments.RouteListStopsFragment;
 import com.example.vpbus.ui.fragments.RouteScheduleFragment;
+import com.example.vpbus.ui.fragments.RouteTimeChartFragment;
 
 public class RDBottomSheetPageAdapter extends FragmentStateAdapter {
 
@@ -22,7 +23,7 @@ public class RDBottomSheetPageAdapter extends FragmentStateAdapter {
     public Fragment createFragment(int position) {
         switch (position) {
             case 0:
-                return new RouteScheduleFragment();  // BIỂU ĐỒ GIỜ
+                return RouteTimeChartFragment.newInstance(routeShortName, 0);
             case 1:
                 return RouteListStopsFragment.newInstance(routeShortName);     // ĐÁNH GIÁ
             default:

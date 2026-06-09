@@ -1,16 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:gravity="center"
-    android:padding="16dp">
+    android:layout_height="match_parent">
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerFavoriteStops"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:clipToPadding="false"
+        android:paddingTop="8dp"
+        android:paddingBottom="8dp" />
 
     <TextView
-        android:id="@+id/textViewDemo"
-        android:layout_width="wrap_content"
-        android:layout_height="200dp"
-        android:text="Demo Bến yêu thích"
-        android:textSize="30sp"
-        android:textColor="@android:color/black"/>
-</LinearLayout>
+        android:id="@+id/textEmptyFavorites"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:padding="24dp"
+        android:text="Ch&#432;a c&#243; b&#7871;n y&#234;u th&#237;ch"
+        android:textColor="#666666"
+        android:textSize="15sp"
+        android:visibility="gone" />
+</FrameLayout>
